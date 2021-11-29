@@ -1,0 +1,86 @@
+﻿<!--
+    페이지 설명 : 회원가입 과정 중 언어를 선택하는 부분이다.
+    작성자 : 김현재    
+-->
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        .Home{
+            padding:10 5 0 0;
+            text-align:center;
+        }
+        .box{
+            position:relative;
+            width: 400px;
+            height: 400px;
+            padding-top: 3px;
+            padding-bottom: 5px;
+            margin: 0 auto;
+            background-color:lavenderblush;
+        }
+        .box .question_text{
+            margin: auto;
+            width: 80%;
+            height: 10%;
+            padding: 10% 0 0 0;
+            text-align:center;
+            font-size: 20px;
+        }
+        .box .drop_down_box{
+            margin:auto;
+            width: 80 %;
+            height: 30 %;
+            text-align:center;
+            padding-bottom:50%;
+        }
+        .box .drop_down_box .language{
+            width:80%;
+            font-size:30px;
+        }
+        .box .button_box{
+            margin:0;
+            text-align:center;
+        }
+        .box .button_box .button{
+            width : 80%;
+            cursor: pointer;
+            font-size:40px;
+            color:white;
+            background-color:pink;
+            border:0;
+            border-radius: 5px;
+        }
+        .footer {
+            margin:0;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="Home"><h1>Googlasses</h1></div>
+    <div class="box">
+        <div class="question_text">사용하시는 언어를 입력해주세요</div>
+        <div class="drop_down_box" >
+            <select class="language" size="1"  >
+                <option value="Korean">한국어</option>
+                <option value="English">English</option>
+                <option value="Japan">日本語</option>
+                <option value="China">中文</option>
+                <option value="France">français</option>
+                <option value="Russia">русский</option>
+                <option value="Arab">العربية</option>
+            </select>
+        </div>
+        <div class="button_box">
+            <button class ="button">OK</button>
+        </div>
+    </div>
+    <div class="footer">
+        <img src="process.jpg" /><img />
+    </div>
+</body>
+</html>

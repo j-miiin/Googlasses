@@ -140,6 +140,188 @@ a {
     align-items: center;
 }
 
+input[id="menuicon"] {
+    display: none;
+}
+
+input[id="menuicon"] + label {
+    display: block;
+    width: 40px;
+    height: 30px;
+    position: fixed;
+    left: 0;
+    top: calc(50% - 25px);
+    transition: all .35s;
+    cursor: pointer;
+}
+
+input[id="menuicon"] + label span {
+    display: block;
+    position: absolute;
+    width: 80%;
+    height: 5px;
+    border-radius: 30px;
+    background: #9b4747;
+    transition: all .35s;
+}
+
+input[id="menuicon"] + label span:nth-child(1) {
+    top: 0%;
+}
+
+input[id="menuicon"] + label span:nth-child(2) {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+input[id="menuicon"] + label span:nth-child(3) {
+    bottom: 0;
+}
+
+input[id="menuicon"]:checked + label span:nth-child(1) {
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+}
+
+input[id="menuicon"]:checked + label span:nth-child(2) {
+    opacity: 0;
+}
+
+input[id="menuicon"]:checked + label span:nth-child(3) {
+    bottom: 50%;
+    transform: translateY(50%) rotate(-45deg);
+}
+
+input[id="menuicon"]:checked + label + div {
+    left: 0;
+}
+
+input[id="menuicon"]:checked + label {
+    z-index: 2;
+    left: 300px;
+}
+
+.todolist{
+    width: 300px;
+    height: 50%;
+    background: #9b4747;
+    position: fixed;
+    top: 40%;
+    left: -300px;
+    z-index: 1;
+    transition: all .35s;
+}
+
+.todotemplate {
+    z-index: 1;
+    width: 95%;
+    height: 95%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
+
+.todoHead {
+    border-bottom: 1px solid #f6e8db;
+    margin: 10px;
+    text-align: center;
+    color: #f6e8db;
+}
+
+.todoDay {
+    font-size: 12px;
+    text-align: left;
+}
+
+.todoTitle {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.todoLeftTasks {
+    text-align: right;
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+
+.todoContents {
+    flex: 1;
+}
+
+.checkCircle {
+    width: 32px;
+    height: 32px;
+    border-radius: 16px;
+    border: 1px solid #f6e8db;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;   
+}
+
+.todoText{
+    flex: 1;
+    font-size: 21px;
+    color: #404040;
+}
+
+.todoRemove {
+    opacity: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #848484;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.todoRemove:hover {
+    opacity: 1;
+}
+
+.AddToDoBtn {
+    display: none;
+}
+
+.AddToDoBtn + label {
+    display: block;
+    background: #f6e8db;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 50%;
+    bottom: 0px;
+    transform: translate(-50%, 50%);
+    font-size: 60px;
+    border-radius: 40px;
+    border: none;
+    outline: none;
+}
+
+.AddToDoBtn + label span {
+    display: block;
+    position: absolute;
+    width: 60%;
+    height: 3px;
+    top: 50%;
+    border-radius: 30px;
+    background: #9b4747;
+    transition: all .35s;
+    left: 19%;
+}
+
+.AddToDoBtn + label span:nth-child(2) {
+    transform: rotate(90deg);
+}
+
+.AddToDoBtn:checked + label span:nth-child(1) {
+    transform: rotate(45deg);
+}
+
 section {
     padding-bottom: 100px;
     height: 500px;
