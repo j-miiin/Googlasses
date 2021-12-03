@@ -1,0 +1,752 @@
+﻿<!-- 
+    [ 메인 홈페이지 ] - 색상 변형 버전
+
+    작성자 : 김정민
+
+    카드뉴스 콘텐츠(뉴스, 쇼핑, 유투브) 추가 : 김현재, 양현식
+
+    카드뉴스 콘텐츠(날씨) 추가 : 김정민
+ -->
+
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <title>Googlasses</title>
+     <link rel="stylesheet" href="../CSS/main_C.css">
+     <script src="https://kit.fontawesome.com/9ccd3a1272.js" 
+     crossorigin="anonymous"
+     ></script>
+     <script src="../JS/main.js" defer></script>
+     <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+     <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+     <!-- 이하 카드 뉴스 관련  -->
+     <style>
+        html {
+            --black-yellow-change: black;
+        }
+
+        html[data-theme="dark"] {
+            --black-yellow-change: #f0e442;
+        }
+  
+        html[data-theme="light"] {
+            --black-yellow-change: black;
+        }
+
+        :root {
+             --swiper-theme-color: var(--black-yellow-change);
+        }
+     </style>
+ 
+     <script>
+         $(function() {
+             $('.nav_menu1').click(function() {
+                 if($(".newsContents").css("display") == "none") {
+                     $(".newsContents").slideDown();
+                     $(".weatherContents").slideUp();
+                     $(".shoppingContents").slideUp();
+                     $(".YouTubeContents").slideUp();
+                 } else {
+                     $(".newsContents").slideUp();
+                 }
+             })
+ 
+             $('.nav_menu2').click(function() {
+                 if($(".weatherContents").css("display") == "none") {
+                     $(".weatherContents").slideDown();
+                     $(".newsContents").slideUp();
+                     $(".shoppingContents").slideUp();
+                     $(".YouTubeContents").slideUp();
+                 } else {
+                     $(".weatherContents").slideUp();
+                 }
+             })
+ 
+             $('.nav_menu3').click(function() {
+                 if($(".shoppingContents").css("display") == "none") {
+                     $(".shoppingContents").slideDown();
+                     $(".newsContents").slideUp();
+                     $(".weatherContents").slideUp();
+                     $(".YouTubeContents").slideUp();
+                 } else {
+                     $(".shoppingContents").slideUp();
+                 }
+             })
+ 
+             $('.nav_menu4').click(function() {
+                 if($(".YouTubeContents").css("display") == "none") {
+                     $(".YouTubeContents").slideDown();
+                     $(".newsContents").slideUp();
+                     $(".weatherContents").slideUp();
+                     $(".shoppingContents").slideUp();
+                 } else {
+                     $(".YouTubeContents").slideUp();
+                 }
+             })
+         })
+     </script>  
+ </head>
+ 
+ <body>
+     <!-- 헤더 (다크모드, 로그인) -->
+     <header class="header">
+         <a href="./SignIn.html" class="logInTxt" target="_self">LogIn</a>
+         <input type="checkbox" id="darkmode_toggle" />
+         <label for="darkmode_toggle" class="darkmodeBtn">
+            <i class="far fa-moon"></i>
+         </label>
+         <!-- 로고 -->
+         <div class="logo">
+             <p><a href="./main.html" class="logo_btn">Googlasses</a></p>
+         </div>
+     </header>
+     <div id="wrap">
+         <!-- 네비게이션 바 -->
+         <nav class="navbar">
+             <div class="navbar_menu">
+                 <li><a href="#" class="nav_menu1">뉴스</a></li>
+                 <li><a href="#" class="nav_menu2">날씨</a></li>
+                 <li><a href="#" class="nav_menu3">쇼핑</a></li>
+                 <li><a href="#" class="nav_menu4">YouTube</a></li>
+                 <li><button class="nav_menu5" onclick="showPopup(1)">1</button></li>
+                 <li><button class="nav_menu5" onclick="showPopup(2)">2</button></li>
+                 <li><button class="nav_menu5" onclick="showPopup(3)">3</button></li>
+             </div>
+             <ul class="navbar_icons">
+                 <li><a href="#"><i class="fas fa-edit fa-lg"></i></a></li>
+             </ul>
+             <a href="#" class="navbar_toggleBtn">
+                 <i class="fas fa-bars"></i>
+             </a>
+         </nav>
+
+         <div id="popup1" class="hide">
+             <div class="content">
+                 <div>
+                     <button class="popupCloseBtn" onclick="closePopup(1)"><i class="fas fa-times"></i></button>
+                     <p style="font-size:30px">
+                         이메일 작성
+                     </p>
+                     <div>
+                         <form action="input.jsp" method="post">
+                             주소&ensp; <input type="email" name="email" placeholder="notrealmail@notmail.com" style="width:500px;height:25px;font-size:15px;" /><br>
+                         </form>
+                         <form action="input.jsp" method="post">
+                             제목&ensp; <input type="text" name="text" style="width:500px;height:25px;font-size:15px;" /><br>
+                         </form>
+                         <form action="input.jsp" method="post">
+                             내용&ensp; <textarea name="feedback" rows="20" cols="66"></textarea><br>
+                         </form>
+                         <form action="input.jsp" method="post">
+                             <input type="button" value="전송" onclick="alert('메일을 성공적으로 전송하였습니다.')">
+                         </form>
+                     </div>
+                 </div>
+             </div>
+         </div>
+
+        <div id="popup2" class="hide">
+            <div class="content">
+                <button class="popupCloseBtn" onclick="closePopup(2)"><i class="fas fa-times"></i></button>
+                <div>
+                        <h2 class="mapTitle">지도에서 '상명대학교' 검색</h2>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3160.9796489231526!2d126.9530579506139!3d37.602637979692005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357b2919c82801fb%3A0x8da4671836a7efc8!2z7IOB66qF64yA7ZWZ6rWQIOyEnOyauOy6oO2NvOyKpA!5e0!3m2!1sko!2skr!4v1638295301109!5m2!1sko!2skr" 
+                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy">상명대학교 구글맵</iframe>
+                </div>
+            </div>
+        </div>
+
+        <div id="popup3" class="hide">
+            <div class="content">
+                <button class="popupCloseBtn" onclick="closePopup(3)"><i class="fas fa-times"></i></button>
+                <h2 class="mapTitle">OTT Service</h2>
+                <iframe class="ottPopup" src="../HTML/ott_popup.html" 
+                width="600" height="400" style="border:0;"></iframe>
+            </div>
+        </div>
+
+ 
+         <!-- 검색창 -->
+         <div class="search_box">
+             <input type="text" class="search_txt" name="" placeholder="Search">
+             <a href="#" class="search_btn" type="submit">
+                 <i class="fas fa-search fa-lg"></i>
+             </a>
+         </div>
+ 
+         <!-- 사이드바 투두리스트 -->
+         <div class="sidebar">
+             <input type="checkbox" id="menuicon">
+             <label for="menuicon">
+                 <span></span>
+                 <span></span>
+                 <span></span>
+             </label>
+             <div class="todolist">
+                 <div class="todotemplate">
+                     <div class="todoHead">
+                         <div class="todoDay">
+                             
+                         </div>
+                         <h1 class="todoTitle">To Do List</h1>           
+                     </div>      
+                     <div class="inputTodo">
+                         <form>
+                             <input type="text" class="inputTodoItem" autofocus="true">
+                             <button type = "button" class="todoInputBtn">
+                                 <i class="fas fa-plus"></i>
+                             </button>
+                         </form>
+                     </div>     
+                     <div class="todoContents">
+                         <div class="todoItemList"></div>
+                     </div>
+                 </div>
+             </div>
+         </div>
+ 
+         <!-- 콘텐츠 부분 -->
+         <section>
+             <div class="newsContents">
+                 <div class="contents_box">
+                     <div class="tempdiv">
+                         <div class="swiper-container">
+                             <div class="swiper-wrapper">
+                               <!-- 카드뉴스 1 -->
+                               <div class="swiper-slide">
+                                 <a href="https://www.seoul.co.kr/news/newsView.php?id=20211125500016" target="_blank">
+                                     <!-- 클릭 시 링크 설정 -->
+                                     <div class="card">
+                                         <!-- 카드 헤더 -->
+                                         <div class="card-header1">
+                                         </div>
+                                         <!--  카드 바디 -->
+                                         <div class="card-body">
+                                             <!--  카드 바디 헤더 -->
+                                             <div class="card-body-header">
+                                                 <h1 class="cardnews_title">전면 등교 시행에 학생 감염 증가... 유은혜 “백신접종 기회 제공”</h1>
+                                                 <p class="card-body-hashtag">#코로나 #전면등교 #유은혜 </p>
+                                             </div>
+                                             <p class="card-body-description">
+                                                 지난 22일 전국에서 전면 등교가 시작된 가운데, 학생들을 중심으로 신종 코로나바이러스 감염증(코로나19)
+                                                 확진자가 증가하는 양상을 보이고 있다. 이에 유은혜 부총리 겸 교육부 장관은 25일 정부서울청사에서
+                                                 감염병 전문가들과 긴급 자문회의를 열었다.
+                                                 <br><br> 기사더보기 <br><br><br><br>
+                                             </p>
+                                             <!--  카드 바디 본문 -->
+                                             <!--  카드 바디 푸터 -->
+                                             <div class="card-body-footer">
+                                                 <i class="omments_count"></i>댓글 0개
+                                                 <i class="reg_date"> 2021/11/25 09:24 </i>
+                                             </div>
+                                         </div>
+                                     </div>
+                                 </a>
+                             </div>
+                             <!-- 카드뉴스 2 -->
+                             <div class="swiper-slide">
+                                 <a href="https://www.donga.com/news/article/all/20211127/110485334/2" target="_blank">
+                                     <!-- 클릭 시 링크 설정 -->
+                                     <div class="card">
+                                         <!-- 카드 헤더 -->
+                                         <div class="card-header2">
+                                         </div>
+                                         <!--  카드 바디 -->
+                                         <div class="card-body">
+                                             <!--  카드 바디 헤더 -->
+                                             <div class="card-body-header">
+                                                 <h1 class="cardnews_title">전단지 넣은 70대 할머니 무릎 꿇린 미용실 점주…“사죄드린다”</h1>
+                                                 <p class="card-body-hashtag">#전단지 #70대 #점주</p>
+                                             </div>
+                                             <p class="card-body-description">
+                                                 서울 대학가의 한 미용실 점주가 우편함에 전단지를 넣은 할머니를 무릎을 꿇게 해 공분을 사고 있다.
+                                                 27일 서대문경찰서에 따르면 지난 3월 서대문구에 있는 미용실 점주 A 씨는 전단지 배포 아르바이트를 하던
+                                                 70대 할머니가 가게 우편함에 전단지를 넣자 무릎을 꿇게 했다. 점주의 신고를 받고 출동한 경찰은
+                                                 할머니를 일으켜 세우며 상황을 정리했다.
+                                                 <br><br> 기사더보기 <br><br><br><br>
+                                             </p>
+                                             <!--  카드 바디 본문 -->
+                                             <!--  카드 바디 푸터 -->
+                                             <div class="card-body-footer">
+                                                 <i class="omments_count"></i>댓글 27개
+                                                 <i class="reg_date"> 2021/11/27 16:29 </i>
+                                             </div>
+                                         </div>
+                                     </div>
+                                 </a>
+                             </div>
+                             <!-- 카드뉴스 3 -->
+                             <div class="swiper-slide">
+                                 <a href="https://www.seoul.co.kr/news/newsView.php?id=20211123010017" target="_blank">
+                                     <!-- 클릭 시 링크 설정 -->
+                                     <div class="card">
+                                         <!-- 카드 헤더 -->
+                                         <div class="card-header3">
+                                         </div>
+                                         <!--  카드 바디 -->
+                                         <div class="card-body">
+                                             <!--  카드 바디 헤더 -->
+                                             <div class="card-body-header">
+                                                 <h1 class="cardnews_title">고3 “감독관 때문에 수능 망쳤다”… 교육청도 잘못 인정</h1>
+                                                 <p class="card-body-hashtag">#수능 #교육청 #감독관</p>
+                                             </div>
+                                             <p class="card-body-description">
+                                                ‘감독관 실수로 수능을 망쳤다’는 온라인 커뮤니티 글이 사실로 확인됐다.
+                                                 대구시교육청은 지난 18일 치른 2022년 대학수학능력시험 도중 한 감독관의 실수를 확인했다고 22일 밝혔다.
+                                                 <br><br> 기사더보기 <br><br><br><br>
+                                             </p>
+                                             <!--  카드 바디 본문 -->
+                                             <!--  카드 바디 푸터 -->
+                                             <div class="card-body-footer">
+                                                 <i class="omments_count"></i>댓글 0개
+                                                 <i class="reg_date"> 2021/11/22 22:26 </i>
+                                             </div>
+                                         </div>
+                                     </div>
+                                 </a>
+                             </div>
+                             <!-- 카드뉴스 4 -->
+                             <div class="swiper-slide">
+                                 <a href="http://www.veritas-a.com/news/articleView.html?idxno=398726" target="_blank">
+                                     <!-- 클릭 시 링크 설정 -->
+                                     <div class="card">
+                                         <!-- 카드 헤더 -->
+                                         <div class="card-header4">
+                                         </div>
+                                         <!--  카드 바디 -->
+                                         <div class="card-body">
+                                             <!--  카드 바디 헤더 -->
+                                             <div class="card-body-header">
+                                                 <h1 class="cardnews_title"> [단독] 대교협 2022정시박람회 '2년만' 재개</h1>
+                                                 <p class="card-body-hashtag">#코로나 #정시 #대학입학</p>
+                                             </div>
+                                             <p class="card-body-description">
+                                                 <오전/오후 구분.. 1800명 인원 제한>
+                                                 올해 대교협 정시박람회는 12월16일부터 18일까지 사흘간 서울 삼성동 코엑스 1층 A홀에서 진행된다.
+                                                 관람 시간은 1,2부로 구분해 1부는 오전10시부터 오후1시까지, 2부는 오후2시부터 5시까지다.
+                                                 <br><br> 기사더보기 <br><br><br><br>
+                                             </p>
+                                             <!--  카드 바디 본문 -->
+                                             <!--  카드 바디 푸터 -->
+                                             <div class="card-body-footer">
+                                                 <i class="omments_count"></i>댓글 0개
+                                                 <i class="reg_date"> 2021/11/26 17:17 </i>
+                                             </div>
+                                         </div>
+                                     </div>
+                                 </a>
+                             </div>
+                             <!-- 카드뉴스 5 -->
+                             <div class="swiper-slide">
+                                 <a href="http://mbiz.heraldcorp.com/view.php?ud=20211127000015" target="_blank">
+                                     <!-- 클릭 시 링크 설정 -->
+                                     <div class="card">
+                                         <!-- 카드 헤더 -->
+                                         <div class="card-header5">
+                                         </div>
+                                         <!--  카드 바디 -->
+                                         <div class="card-body">
+                                             <!--  카드 바디 헤더 -->
+                                             <div class="card-body-header">
+                                                 <h1 class="cardnews_title"> 전세계적 공포 ‘오미크론’, 누구냐 넌</h1>
+                                                 <p class="card-body-hashtag">#코로나 #변이 #오미크론</p>
+                                             </div>
+                                             <p class="card-body-description">
+                                                 <오전/오후 구분.. 1800명 인원 제한>
+                                                 세계가 ‘오미크론(Omicron)’ 공포에 빠졌다. 코로나19 델타변이도 잡지 못해 전전긍긍하는데 세계보건기구(WHO)가 또 다른 ‘우려 변이(variant of concern)’로 오미크론을 지정하면서다.
+                                                 항체를 무력화 수 있는 돌연변이가 많은 걸로 파악되는 오미크론이 코로나19 백신엔 어떤 영향을 미칠지를 보려면 추가 연구가 필요한 상황이다.
+                                                 각 국은 서둘러 국경의 빗장을 걸고 있다. 미국과 유럽 등 글로벌 증시를 폭락시킨 오미크론은 현재로선 어디로 튈지 모르는 변이여서 두려움을 더하고 있다.
+                                                 외신에 따르면 남아프리카공화국 보건부 산하 국립감염병연구소(NICD)는 지난 23일 이 새 코로나19 변이를 확인했다.
+                                                 지난달 14~16일 환자에게서 채취한 샘플을 분석한 결과였다. 애초 새 변이가 발견된 건 아프리카 보츠와나다.
+                                                 처음엔 ‘B.1.1.529’라는 이름으로 불렸다. 남아공 보건당국은 유전자 염기서열 분석을 추가로 진행한 뒤 한 뒤 자국 정부에 우려를 전달하고, WHO엔 이 변이에 대한 기술적워킹그룹을 26일 소집해달라고 요청했다.
+                                                 WHO는 이 요청을 받아들여 이날 회의를 열고 ‘우려변이’로 분류했다. 공식 명칭은 그리스 알파벳의 15번째 글자인 ‘오미크론’으로 정했다.
+                                                 <br><br> 기사더보기 <br><br><br><br>
+                                             </p>
+                                             <!--  카드 바디 본문 -->
+                                             <!--  카드 바디 푸터 -->
+                                             <div class="card-body-footer">
+                                                 <i class="omments_count"></i>댓글 0개
+                                                 <i class="reg_date"> 2021/11/27 09:18 </i>
+                                             </div>
+                                         </div>
+                                     </div>
+                                 </a>
+                             </div>
+                            </div> 
+                             <div class="swiper-pagination"></div>
+                 
+                             <div class="swiper-scrollbar"></div>
+                         </div>
+                         <div class="swiper-button-prev"></div>
+                         <div class="swiper-button-next"></div>
+                     </div>
+                 </div>
+             </div>
+             <div class="weatherContents">
+                 <div class="CurrIcon">현재 날씨</div>
+                 <div class="CurrTemp"></div>
+                 <div class="City"></div>
+             </div>
+             <div class="shoppingContents">
+                <div class="contents_box">
+                    <div class="tempdiv">
+                        <div class="swiper-container">
+                            <div class="swiper-wrapper">
+                                <!-- 카드뉴스 1 -->
+                                <div class="swiper-slide">
+                                    <a href="https://www.coupang.com/vp/products/6091199372?itemId=11356856874&vendorItemId=78633225201&q=%EC%95%84%EC%9D%B4%ED%8F%B0&itemsCount=36&searchId=735d88968e074092850c66d7ac704735&rank=0"
+                                        target="_blank">
+                                        <!-- 클릭 시 링크 설정 -->
+                                        <div class="card">
+                                            <!-- 카드 헤더 -->
+                                            <div class="shopping-card-header1">
+                                            </div>
+                                            <!--  카드 바디 -->
+                                            <div class="card-body">
+                                                <!--  카드 바디 헤더 -->
+                                                <div class="card-body-header">
+                                                    <h1 class="cardnews_title">아이폰 13</h1>
+                                                    <p class="card-body-hashtag">#애플 #스마트폰 #가격 : 1,193,100원</p>
+                                                </div>
+                                                <p class="card-body-description">
+                                                    가전 모델: iPhone 13<br>
+                                                    화면크기: 6.1<br>
+                                                    저장용량: 256GB<br>
+                                                    무게: 332g<br>
+                                                    <br><br> 쇼핑 하러 가기 <br><br><br><br>
+                                                </p>
+                                                <!--  카드 바디 본문 -->
+                                                <!--  카드 바디 푸터 -->
+                                                <div class="card-body-footer">
+                                                    <i class="omments_count"></i>댓글 0개
+                                                    <i class="reg_date"> 21-11-25 09:24 </i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <!-- 카드뉴스 2 -->
+                                <div class="swiper-slide">
+                                    <a href="https://smartstore.naver.com/ahaoffice2/products/6000091748?NaPm=ct%3Dkwlshciw%7Cci%3Da42a6c685a082089c00376d580152b486121b137%7Ctr%3Dslsl%7Csn%3D351600%7Chk%3De600feaac2a986028487fcdce19a0a2f44b5a8a8"
+                                        target="_blank">
+                                        <!-- 클릭 시 링크 설정 -->
+                                        <div class="card">
+                                            <!-- 카드 헤더 -->
+                                            <div class="shopping-card-header2">
+                                            </div>
+                                            <!--  카드 바디 -->
+                                            <div class="card-body">
+                                                <!--  카드 바디 헤더 -->
+                                                <div class="card-body-header">
+                                                    <h1 class="cardnews_title">닌텐도 스위치</h1>
+                                                    <p class="card-body-hashtag">#닌텐도 #게임기 #가격 : 360,000원</p>
+                                                </div>
+                                                <p class="card-body-description">
+                                                    CPU : NVIDIA Tegra X1 T210
+                                                    GPU : NVIDIA GM20B 768MHz
+                                                    RAM : 4GB LPDDR4 SDRAM<br>
+                                                    디스플레이 : 6.2인치 HD(1280 x 720) <br>
+                                                    배터리 : 지속시간: 약 2.5시간 ~ 6.5시간<br>
+                                                    크기: 세로 102mm × 가로 239mm × 두께 13.9mm <br>
+                                                    무게: 약 297g<br>
+                                                    <br><br> 쇼핑 하러 가기 <br><br><br><br>
+                                                </p>
+                                                <!--  카드 바디 본문 -->
+                                                <!--  카드 바디 푸터 -->
+                                                <div class="card-body-footer">
+                                                    <i class="omments_count"></i>댓글 27개
+                                                    <i class="reg_date"> 21-11-27 16:29 </i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <!-- 카드뉴스 3 -->
+                                <div class="swiper-slide">
+                                    <a href="https://www.coupang.com/vp/products/6213456981?itemId=12396793504&vendorItemId=79666362214&q=10%EB%8C%80&itemsCount=36&searchId=48fd34bb47964496b5e53ad56a06fab3&rank=52"
+                                        target="_blank">
+                                        <!-- 클릭 시 링크 설정 -->
+                                        <div class="card">
+                                            <!-- 카드 헤더 -->
+                                            <div class="shopping-card-header3">
+                                            </div>
+                                            <!--  카드 바디 -->
+                                            <div class="card-body">
+                                                <!--  카드 바디 헤더 -->
+                                                <div class="card-body-header">
+                                                    <h1 class="cardnews_title">베이직 캐주얼 백팩 대학생 여행 패션 아이보리 가방</h1>
+                                                    <p class="card-body-hashtag">#블루316 #가방 #가격:33,190원</p>
+                                                </div>
+                                                <p class="card-body-description">
+                                                    소재: POLY<br>
+                                                    사이즈: 가로32x 세로45x두께13cm<br>
+                                                    무게: 430G
+                                                    색상: 아이보리, 블랙
+                                                    <br><br> 쇼핑 하러 가기 <br><br><br><br>
+                                                </p>
+                                                <!--  카드 바디 본문 -->
+                                                <!--  카드 바디 푸터 -->
+                                                <div class="card-body-footer">
+                                                    <i class="omments_count"></i>댓글 0개
+                                                    <i class="reg_date"> 21-11-22 22:26 </i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <!-- 카드뉴스 4 -->
+                                <div class="swiper-slide">
+                                    <a href="https://www.coupang.com/vp/products/6029383225?itemId=10990382174&vendorItemId=78664993150&sourceType=srp_product_ads&clickEventId=e800c15f-8208-4d9a-9d9e-5ac50c6d3f29&korePlacement=15&koreSubPlacement=1&clickEventId=e800c15f-8208-4d9a-9d9e-5ac50c6d3f29&korePlacement=15&koreSubPlacement=1&q=%EB%B0%9C%EB%A0%8C%EC%8B%9C%EC%95%84%EA%B0%80&itemsCount=36&searchId=542cb1bec0d44f9a81ec81fa7d3a6e4f&rank=0"
+                                        target="_blank">
+                                        <!-- 클릭 시 링크 설정 -->
+                                        <div class="card">
+                                            <!-- 카드 헤더 -->
+                                            <div class="shopping-card-header4">
+                                            </div>
+                                            <!--  카드 바디 -->
+                                            <div class="card-body">
+                                                <!--  카드 바디 헤더 -->
+                                                <div class="card-body-header">
+                                                    <h1 class="cardnews_title">21SS 스피드러너 블랙 핑크 스니커즈 587280 W2DBB 1586 5
+                                                    </h1>
+                                                    <p class="card-body-hashtag">#발렌시아가 #의류 #가격: 896,740원</p>
+                                                </div>
+                                                <p class="card-body-description">
+                                                    원산지(Origin) : ITALY<br>
+                                                    소재(Material) : Neoprene 100%<br>
+                                                    수입방식: 병행수입<br>
+                                                    색상계열: 블랙계열<br>
+                                                    사용계절: 사계절용<br>
+                                                    배송(Delivery) : 국내 당일발송<br>
+                                                    <br><br> 쇼핑 하러 가기 <br><br><br><br>
+                                                </p>
+                                                <!--  카드 바디 본문 -->
+                                                <!--  카드 바디 푸터 -->
+                                                <div class="card-body-footer">
+                                                    <i class="omments_count"></i>댓글 0개
+                                                    <i class="reg_date"> 21.11.26 17:17 </i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+
+                            </div>
+                            <div class="swiper-pagination"></div>
+
+                            <div class="swiper-scrollbar"></div>
+                        </div>
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+                    </div>
+                </div>
+            </div>
+             <div class="YouTubeContents">
+                 <div class="contents_box">
+                     <div class="tempdiv">
+                         <div class="swiper-container">
+                             <div class="swiper-wrapper">
+                                 <!-- 카드뉴스 1 -->
+                                 <div class="swiper-slide">
+                                     <a href="https://www.youtube.com/watch?v=YUOsy1nGgQM" target="_blank">
+                                         <!-- 클릭 시 링크 설정 -->
+                                         <div class="card">
+                                             <!-- 카드 헤더 -->
+                                             <div class="youtube-card-header1">
+                                             </div>
+                                             <!--  카드 바디 -->
+                                             <div class="card-body">
+                                                 <!--  카드 바디 헤더 -->
+                                                 <div class="card-body-header">
+                                                     <h1 class="cardnews_title">[짐승친구들] 국밥충</h1>
+                                                     <p class="card-body-hashtag">#짤툰 #애니메이션 #짐승친구들 </p>
+                                                 </div>
+                                                 <p class="card-body-description">
+                                                     [이 만화는 무료로 웃겨줍니다!
+
+                                                     [배급 : 빅픽처팀] [기획 : 비크리스피] [제작 : 짤태식 스튜디오]
+                                                     각본 - 짤태식 / 작화 - 최수빈, 김혜은 (feat. 최혁준) / 도움 - 김태훈, 황현식, 장다현, 김주은, 주아랑, 이유진, 최지영, 윤남우, 황태훈, 신수진 / 성우 - 짤태식, 성현희, 김상자
+
+                                                 </p>
+                                                 <!--  카드 바디 본문 -->
+                                                 <!--  카드 바디 푸터 -->
+                                                 <div class="card-body-footer">
+                                                     <i class="omments_count"></i>댓글 12,183개
+                                                     <i class="reg_date"> 2021. 7. 10.  </i>
+                                                 </div>
+                                             </div>
+                                         </div>
+                                     </a>
+                                 </div>
+                                 <!-- 카드뉴스 2 -->
+                                 <div class="swiper-slide">
+                                     <a href="https://www.youtube.com/watch?v=ub1WfnpqXFc" target="_blank">
+                                         <!-- 클릭 시 링크 설정 -->
+                                         <div class="card">
+                                             <!-- 카드 헤더 -->
+                                             <div class="youtube-card-header2">
+                                             </div>
+                                             <!--  카드 바디 -->
+                                             <div class="card-body">
+                                                 <!--  카드 바디 헤더 -->
+                                                 <div class="card-body-header">
+                                                     <h1 class="cardnews_title">청주에 신상 분식 맛집이 떳다!! 100% 수제로 만드는 튀김에 쫀득쫀득 쌀 떡볶이 대존맛집 </h1>
+                                                     <p class="card-body-hashtag">#전단지 #70대 #점주</p>
+                                                 </div>
+                                                 <p class="card-body-description">
+                                                     🎥 시청해주셔서 감사합니다!
+                                                     딜라이트는 다양한 음식과 함께 쉼과 즐거움을 즐기는 채널입니다.
+
+                                                     🔔 구독 Delight
+                                                     https://bit.ly/3ov1ToX
+
+                                                     📍 위치
+                                                     떡보라 2호점
+                                                     http://naver.me/xNdl2FMS
+
+                                                     💰가격
+                                                     가래쌀떡볶이 세트 : KRW 3,000
+                                                     모듬튀김 : KRW 5,000
+                                                 </p>
+                                                 <!--  카드 바디 본문 -->
+                                                 <!--  카드 바디 푸터 -->
+                                                 <div class="card-body-footer">
+                                                     <i class="omments_count"></i> 댓글 2,753개
+                                                     <i class="reg_date"> 2021. 4. 5. </i>
+                                                 </div>
+                                             </div>
+                                         </div>
+                                     </a>
+                                 </div>
+                                 <!-- 카드뉴스 3 -->
+                                 <div class="swiper-slide">
+                                     <a href="https://www.youtube.com/watch?v=qcJ7pqZaMjo" target="_blank">
+                                         <!-- 클릭 시 링크 설정 -->
+                                         <div class="card">
+                                             <!-- 카드 헤더 -->
+                                             <div class="youtube-card-header3">
+                                             </div>
+                                             <!--  카드 바디 -->
+                                             <div class="card-body">
+                                                 <!--  카드 바디 헤더 -->
+                                                 <div class="card-body-header">
+                                                     <h1 class="cardnews_title">가을에 듣기 좋은 노래 베스트 BEST 100곡| 하루 종일 들어도 좋은노래 BEST 100곡 | 일할때 듣기좋은 발라드 || 김범수 /바비킴/ 더원/태연/박명수/ 조성모/이승환</h1>
+                                                     <p class="card-body-hashtag">#발라드 #2000년대 #1990년대</p>
+                                                 </div>
+                                                 <p class="card-body-description">
+                                                     가을에 듣기 좋은 노래 베스트 BEST 100곡| 하루 종일 들어도 좋은노래 BEST 100곡 | 일할때 듣기좋은 발라드 || 김범수 /바비킴/ 더원/태연/박명수/ 조성모/이승환
+
+                                                     https://youtu.be/qcJ7pqZaMjo
+                                                     ===========================
+                                                     #발라드 명곡#2000년대 발라드#1990년대 발라드#Koreanballadsongs
+                                                 </p>
+                                                 <!--  카드 바디 본문 -->
+                                                 <!--  카드 바디 푸터 -->
+                                                 <div class="card-body-footer">
+                                                     <i class="omments_count"></i> 댓글 32개
+                                                     <i class="reg_date"> 2021. 12. 1. </i>
+                                                 </div>
+                                             </div>
+                                         </div>
+                                     </a>
+                                 </div>
+                                 <!-- 카드뉴스 4 -->
+                                 <div class="swiper-slide">
+                                     <a href="https://www.youtube.com/watch?v=kBsxLoExmSE" target="_blank">
+                                         <!-- 클릭 시 링크 설정 -->
+                                         <div class="card">
+                                             <!-- 카드 헤더 -->
+                                             <div class="youtube-card-header4">
+                                             </div>
+                                             <!--  카드 바디 -->
+                                             <div class="card-body">
+                                                 <!--  카드 바디 헤더 -->
+                                                 <div class="card-body-header">
+                                                     <h1 class="cardnews_title"> 포켓몬이 말하면 안되는 이유 </h1>
+                                                     <p class="card-body-hashtag">#포켓몬스터 #꼬준이 #자라탕</p>
+                                                 </div>
+                                                 <p class="card-body-description">
+                                                     얘네 말하는 순간 방송 정지 당함;
+
+                                                     ────
+
+                                                     인스타 :: instagram.com/yuferesia
+                                                     이메일 :: yuferesia@naver.com
+                                                 </p>
+                                                 <!--  카드 바디 본문 -->
+                                                 <!--  카드 바디 푸터 -->
+                                                 <div class="card-body-footer">
+                                                     <i class="omments_count"></i> 댓글 1,428개
+                                                     <i class="reg_date">  2021. 11. 20. </i>
+                                                 </div>
+                                             </div>
+                                         </div>
+                                     </a>
+                                 </div>
+                                 <!-- 카드뉴스 5 -->
+                                 <div class="swiper-slide">
+                                     <a href="https://www.youtube.com/watch?v=dckeXowI4XA" target="_blank">
+                                         <!-- 클릭 시 링크 설정 -->
+                                         <div class="card">
+                                             <!-- 카드 헤더 -->
+                                             <div class="youtube-card-header5">
+                                             </div>
+                                             <!--  카드 바디 -->
+                                             <div class="card-body">
+                                                 <!--  카드 바디 헤더 -->
+                                                 <div class="card-body-header">
+                                                     <h1 class="cardnews_title"> 요즘 핫한 로블록스의 오징어 게임을 해봤습니다 ㅋㅋㅋㅋ</h1>
+                                                     <p class="card-body-hashtag">   </p>
+                                                 </div>
+                                                 <p class="card-body-description">
+                                                     ▼게임 다운로드 주소는 아래에 있습니다▼
+
+                                                     ※아프리카TV 방송국: https://goo.gl/36YQW7
+
+                                                     ※구독하기 : https://goo.gl/hmGy4i
+
+
+
+                                                     ※게임제목 : 로블록스 오징어게임
+
+                                                     ※다운로드링크 : https://www.roblox.com/games/75492299...
+                                                 </p>
+                                                 <!--  카드 바디 본문 -->
+                                                 <!--  카드 바디 푸터 -->
+                                                 <div class="card-body-footer">
+                                                     <i class="omments_count"></i> 댓글 347개
+                                                     <i class="reg_date"> 2021. 10. 10. </i>
+                                                 </div>
+                                             </div>
+                                         </div>
+                                     </a>
+                                 </div>
+                             </div>
+                             <div class="swiper-pagination"></div>
+
+                             <div class="swiper-scrollbar"></div>
+                         </div>
+                         <div class="swiper-button-prev"></div>
+                         <div class="swiper-button-next"></div>
+                     </div>
+                 </div>
+             </div>
+         </section>
+ 
+         <!-- footer 부분 -->
+         <footer>
+             <nav>
+                 <a href="https://github.com/j-miiin/Googlasses" target="_blank">GitHub</a>
+             </nav>
+             <p>
+                 <span>저자 : Googlasses</span><br>
+                 <span>Copyright 2021. Googlasses. All Rights Reserved.</span>
+             </p>
+         </footer>
+     </div>
+     
+ </body>
+ 
+ </html>

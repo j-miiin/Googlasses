@@ -1,0 +1,732 @@
+﻿<!-- 
+    [ 메인 홈페이지 ] - 색상 변형 버전
+
+    작성자 : 김정민
+
+    카드뉴스 콘텐츠(뉴스, 쇼핑, 유투브) 추가 : 김현재, 양현식
+
+    카드뉴스 콘텐츠(날씨) 추가 : 김정민
+ -->
+
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <title>Googlasses</title>
+     <link rel="stylesheet" href="../CSS/main_41-60_C.css">
+     <script src="https://kit.fontawesome.com/9ccd3a1272.js" 
+     crossorigin="anonymous"
+     ></script>
+     <script src="../JS/main.js" defer></script>
+     <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+     <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+     <!-- 이하 카드 뉴스 관련  -->
+     <style>
+        html {
+            --black-yellow-change: black;
+        }
+
+        html[data-theme="dark"] {
+            --black-yellow-change: #f0e442;
+        }
+  
+        html[data-theme="light"] {
+            --black-yellow-change: black;
+        }
+
+        :root {
+             --swiper-theme-color: var(--black-yellow-change);
+        }
+     </style>
+ 
+    <script>
+        $(function() {
+            $('.nav_menu1').click(function() {
+                if($(".newsContents").css("display") == "none") {
+                    $(".newsContents").slideDown();
+                    $(".weatherContents").slideUp();
+                    $(".shoppingContents").slideUp();
+                    $(".YouTubeContents").slideUp();
+                } else {
+                    $(".newsContents").slideUp();
+                }
+            })
+
+            $('.nav_menu2').click(function() {
+                if($(".weatherContents").css("display") == "none") {
+                    $(".weatherContents").slideDown();
+                    $(".newsContents").slideUp();
+                    $(".shoppingContents").slideUp();
+                    $(".YouTubeContents").slideUp();
+                } else {
+                    $(".weatherContents").slideUp();
+                }
+            })
+
+            $('.nav_menu3').click(function() {
+                if($(".shoppingContents").css("display") == "none") {
+                    $(".shoppingContents").slideDown();
+                    $(".newsContents").slideUp();
+                    $(".weatherContents").slideUp();
+                    $(".YouTubeContents").slideUp();
+                } else {
+                    $(".shoppingContents").slideUp();
+                }
+            })
+
+            $('.nav_menu4').click(function() {
+                if($(".YouTubeContents").css("display") == "none") {
+                    $(".YouTubeContents").slideDown();
+                    $(".newsContents").slideUp();
+                    $(".weatherContents").slideUp();
+                    $(".shoppingContents").slideUp();
+                } else {
+                    $(".YouTubeContents").slideUp();
+                }
+            })
+        })
+    </script>  
+ </head>
+ 
+ <body>
+     <!-- 헤더 (다크모드, 로그인) -->
+     <header class="header">
+        <a href="./SignIn.html" class="logInTxt" target="_self">LogIn</a>
+        <input type="checkbox" id="darkmode_toggle" />
+         <label for="darkmode_toggle" class="darkmodeBtn">
+            <i class="far fa-moon"></i>
+         </label>
+        <!-- 로고 -->
+        <div class="logo">
+            <p><a href="./main.html" class="logo_btn">Googlasses</a></p>
+        </div>
+    </header>
+
+     <div id="wrap">
+         <!-- 네비게이션 바 -->
+         <nav class="navbar">
+             <div class="navbar_menu">
+                 <li><a href="#" class="nav_menu1">뉴스</a></li>
+                 <li><a href="#" class="nav_menu2">날씨</a></li>
+                 <li><a href="#" class="nav_menu3">쇼핑</a></li>
+                 <li><a href="#" class="nav_menu4">YouTube</a></li>
+                 <li><button class="nav_menu5" onclick="showPopup(1)">1</button></li>
+                 <li><button class="nav_menu5" onclick="showPopup(2)">2</button></li>
+                 <li><button class="nav_menu5" onclick="showPopup(3)">3</button></li>
+             </div>
+             <ul class="navbar_icons">
+                 <li><a href="#"><i class="fas fa-edit fa-lg"></i></a></li>
+             </ul>
+             <a href="#" class="navbar_toggleBtn">
+                 <i class="fas fa-bars"></i>
+             </a>
+         </nav>
+
+         <div id="popup1" class="hide">
+             <div class="content">
+                 <div>
+                     <button class="popupCloseBtn" onclick="closePopup(1)"><i class="fas fa-times"></i></button>
+                     <p style="font-size:30px">
+                         이메일 작성
+                     </p>
+                     <div>
+                         <form action="input.jsp" method="post">
+                             주소&ensp; <input type="email" name="email" placeholder="notrealmail@notmail.com" style="width:500px;height:25px;font-size:15px;" /><br>
+                         </form>
+                         <form action="input.jsp" method="post">
+                             제목&ensp; <input type="text" name="text" style="width:500px;height:25px;font-size:15px;" /><br>
+                         </form>
+                         <form action="input.jsp" method="post">
+                             내용&ensp; <textarea name="feedback" rows="20" cols="66"></textarea><br>
+                         </form>
+                         <form action="input.jsp" method="post">
+                             <input type="button" value="전송" onclick="alert('메일을 성공적으로 전송하였습니다.')">
+                         </form>
+                     </div>
+                 </div>
+             </div>
+         </div>
+
+        <div id="popup2" class="hide">
+            <div class="content">
+                <button class="popupCloseBtn" onclick="closePopup(2)"><i class="fas fa-times"></i></button>
+                <div>
+                        <h2 class="mapTitle">지도에서 '상명대학교' 검색</h2>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3160.9796489231526!2d126.9530579506139!3d37.602637979692005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357b2919c82801fb%3A0x8da4671836a7efc8!2z7IOB66qF64yA7ZWZ6rWQIOyEnOyauOy6oO2NvOyKpA!5e0!3m2!1sko!2skr!4v1638295301109!5m2!1sko!2skr" 
+                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy">상명대학교 구글맵</iframe>
+                </div>
+            </div>
+        </div>
+
+        <div id="popup3" class="hide">
+            <div class="content">
+                <button class="popupCloseBtn" onclick="closePopup(3)"><i class="fas fa-times"></i></button>
+                <h2 class="mapTitle">OTT Service</h2>
+                <iframe class="ottPopup" src="../HTML/ott_popup.html" 
+                width="600" height="400" style="border:0;"></iframe>
+            </div>
+        </div>
+ 
+         <!-- 검색창 -->
+         <div class="search_box">
+             <input type="text" class="search_txt" name="" placeholder="Search">
+             <a href="#" class="search_btn" type="submit">
+                 <i class="fas fa-search fa-lg"></i>
+             </a>
+         </div>
+ 
+         <!-- 사이드바 투두리스트 -->
+         <div class="sidebar">
+             <input type="checkbox" id="menuicon">
+             <label for="menuicon">
+                 <span></span>
+                 <span></span>
+                 <span></span>
+             </label>
+             <div class="todolist">
+                 <div class="todotemplate">
+                     <div class="todoHead">
+                         <div class="todoDay">
+                             
+                         </div>
+                         <h1 class="todoTitle">To Do List</h1>           
+                     </div>      
+                     <div class="inputTodo">
+                         <form>
+                             <input type="text" class="inputTodoItem" autofocus="true">
+                             <button type = "button" class="todoInputBtn">
+                                 <i class="fas fa-plus"></i>
+                             </button>
+                         </form>
+                     </div>     
+                     <div class="todoContents">
+                         <div class="todoItemList"></div>
+                     </div>
+                 </div>
+             </div>
+         </div>
+ 
+         <!-- 콘텐츠 부분 -->
+         <section>
+             <div class="newsContents">
+                 <div class="contents_box">
+                     <div class="tempdiv">
+                         <div class="swiper-container">
+                             <div class="swiper-wrapper">
+                               <!-- 카드뉴스 1 -->
+                               <div class="swiper-slide">
+                                 <a href="https://news.mt.co.kr/mtview.php?no=2021112323351310110" target="_blank">
+                                     <!-- 클릭 시 링크 설정 -->
+                                     <div class="card">
+                                         <!-- 카드 헤더 -->
+                                         <div class="card-header1">
+                                         </div>
+                                         <!--  카드 바디 -->
+                                         <div class="card-body">
+                                             <!--  카드 바디 헤더 -->
+                                             <div class="card-body-header">
+                                                 <h1 class="cardnews_title">도쿄 신규확진 5900명→5명 '뚝'…일본만 왜 이런일이</h1>
+                                                 <p class="card-body-hashtag">#도쿄 #신규확진 #일본 </p>
+                                             </div>
+                                             <p class="card-body-description">
+                                                미국, 유럽 등에서 코로나19 재확산이 심각한 가운데 일본이 일일 신규 확진 50명을 기록하는 최저치를 찍었다.
+                                                23일 마이니치신문 등에 따르면 전날 일본의 신규 코로나 확진자는 50명으로 집계됐다. 올해 하루 신규 확진자 집계 중 가장 적은 수치다. 
+                                                일본에서 하루 확진자가 50명 이하를 기록한 것은 지난해 6월 22일 이후 약 1년 5개월 만이다. 
+                                                주말 영향으로 월요일은 신규 확진자가 적게 나오는 것이 일반적이지만, 22일은 전주 월요일(78명)보다도 28명이 줄었다.
+                                                신규 확진자를 지역별로 보면 수도권 가나가와현이 10명으로 가장 많았다.
+                                                지난 8월 일일 신규확진 5900명을 넘기기도 했던 도쿄의 경우 확진자가 단 5명에 불과했다. 
+                                                도쿄도 인구가 약 1400만명이라는 점을 감안하면 사실상 코로나 확진자가 거의 없어진 셈이다. 
+                                                전체 47개 광역지역단체 중 35개에선 확진자가 한 명도 나오지 않았다. 확진자가 줄다 보니 전국의 중증 환자도 63명으로 4일 연속 70명 이하로 집계됐다. 
+                                                사망자는 2명이었다. 일본의 코로나 환자 급감 이유에 대해선 아무도 명확한 설명을 내놓지 못한다.
+                                                 <br><br> 기사더보기 <br><br><br><br>
+                                             </p>
+                                             <!--  카드 바디 본문 -->
+                                             <!--  카드 바디 푸터 -->
+                                             <div class="card-body-footer">
+                                                 <i class="omments_count"></i>댓글 20개
+                                                 <i class="reg_date"> 2021/11/24/05:00 </i>
+                                             </div>
+                                         </div>
+                                     </div>
+                                 </a>
+                             </div>
+                             <!-- 카드뉴스 2 -->
+                             <div class="swiper-slide">
+                                 <a href="https://segye.com/view/20211124518548" target="_blank">
+                                     <!-- 클릭 시 링크 설정 -->
+                                     <div class="card">
+                                         <!-- 카드 헤더 -->
+                                         <div class="card-header2">
+                                         </div>
+                                         <!--  카드 바디 -->
+                                         <div class="card-body">
+                                             <!--  카드 바디 헤더 -->
+                                             <div class="card-body-header">
+                                                 <h1 class="cardnews_title">‘신변보호’ 전 여친 스토킹 살해범 35세 김병찬 신상 공개</h1>
+                                                 <p class="card-body-hashtag">#스토킹 #살해 #신상</p>
+                                             </div>
+                                             <p class="card-body-description">
+                                                경찰이 전 여자친구를 스토킹하고 살해한 혐의로 구속된 김병찬(35·사진)의 신상정보를 공개했다.
+                                                서울경찰청은 24일 신상정보 공개 심의위원회를 열고 김병찬의 신상정보 공개를 결정했다. 
+                                                위원회는 “미리 흉기를 준비해 피해자 주거지에 찾아가 피해자를 잔인하게 살해했다”며 “범죄 예방 효과 등을 고려해 신상정보를 공개하기로 했다”고 밝혔다. 
+                                                김병찬이 범행 일체를 시인하고, 감식 결과와 폐쇄회로(CC)TV 영상 등 충분한 증거가 확보된 점도 고려됐다.
+                                                김병찬은 지난 19일 오전 11시30분쯤 서울 중구의 한 오피스텔에서 전 여자친구 A(32)씨를 흉기로 찔러 살해한 혐의(살인)를 받고 있다. 
+                                                A씨는 김병찬의 스토킹으로 경찰의 신변보호를 받던 상태였다.
+                                                한편 A씨는 피살 전 긴급호출을 했지만, 경찰이 기술적 문제로 위치를 정확하게 파악할 수 있는 시스템을 활용하지 못한 것으로 확인됐다. 
+                                                경찰에 따르면 서울경찰청 112상황실은 A씨가 피살 직전 스마트워치의 ‘SOS’ 버튼을 눌러 신고하자, 신변보호 위치확인시스템에 접속을 시도했다. 시범운영 중인 이 시스템을 활용하면 위치를 찾는 데 걸리는 시간이 기존 45초에서 3초로 줄고, 최대 2㎞인 위치 오차범위도 20∼50m로 줄어든다. 그러나 시스템 간에 제대로 연동되지 않으면서 경찰은 시스템 접속을 하지 못했다. 결국 경찰은 기지국으로만 위치를 측정할 수밖에 없었고, 출동이 지연되는 동안 피해가 발생했다.
+                                                 <br><br> 기사더보기 <br><br><br><br>
+                                             </p>
+                                             <!--  카드 바디 본문 -->
+                                             <!--  카드 바디 푸터 -->
+                                             <div class="card-body-footer">
+                                                 <i class="omments_count"></i>댓글 27개
+                                                 <i class="reg_date"> 2021/11/25/06:00 </i>
+                                             </div>
+                                         </div>
+                                     </div>
+                                 </a>
+                             </div>
+                             <!-- 카드뉴스 3 -->
+                             <div class="swiper-slide">
+                                 <a href="https://www.seoul.co.kr/news/newsView.php?id=20211125500078" target="_blank">
+                                     <!-- 클릭 시 링크 설정 -->
+                                     <div class="card">
+                                         <!-- 카드 헤더 -->
+                                         <div class="card-header3">
+                                         </div>
+                                         <!--  카드 바디 -->
+                                         <div class="card-body">
+                                             <!--  카드 바디 헤더 -->
+                                             <div class="card-body-header">
+                                                 <h1 class="cardnews_title">다자대결 윤석열 35% 이재명 32%…오차범위내 접전</h1>
+                                                 <p class="card-body-hashtag">#윤석열 #이재명 #접전</p>
+                                             </div>
+                                             <p class="card-body-description">
+                                                다자대결에서 윤석열 국민의힘 대선후보와 이재명 더불어민주당 대선후보가 오차범위 내 접전을 벌이고 있다는 여론조사 결과가 25일 나왔다.
+                                                엠브레인퍼블릭·케이스탯리서치·코리아리서치·한국리서치가 지난 22~24일 전국 만 18세 이상 1004명을 대상으로 무선 전화 면접 방식으로 실시한 전국지표조사(NBS)에서 윤 후보는 35%, 이 후보는 32%의 지지율을 각각 얻었다.
+                                                11월 셋째 주 대비 윤 후보는 1%포인트, 이 후보는 3%포인트 각각 내렸다. 
+                                                이에 따라 두 후보 간 격차는 오차범위(표본오차 95% 신뢰수준에 ±3.1%포인트) 내인 3% 포인트를 기록했다.
+                                                지난 18일 발표된 직전 조사에서 두 후보의 격차는 1%포인트로, 2주 연속 오차범위 내 접전을 이어 갔다.
+                                                 <br><br> 기사더보기 <br><br><br><br>
+                                             </p>
+                                             <!--  카드 바디 본문 -->
+                                             <!--  카드 바디 푸터 -->
+                                             <div class="card-body-footer">
+                                                 <i class="omments_count"></i>댓글 1개
+                                                 <i class="reg_date"> 2021/11/25/13:22 </i>
+                                             </div>
+                                         </div>
+                                     </div>
+                                 </a>
+                             </div>
+                             <!-- 카드뉴스 4 -->
+                             <div class="swiper-slide">
+                                 <a href="https://newsis.com/view/?id=NISX20211124_0001663864" target="_blank">
+                                     <!-- 클릭 시 링크 설정 -->
+                                     <div class="card">
+                                         <!-- 카드 헤더 -->
+                                         <div class="card-header4">
+                                         </div>
+                                         <!--  카드 바디 -->
+                                         <div class="card-body">
+                                             <!--  카드 바디 헤더 -->
+                                             <div class="card-body-header">
+                                                 <h1 class="cardnews_title">이재명 성남시장 시절 비서실장, 檢 조사 마쳐..."특별하게 드릴 말씀 없다"</h1>
+                                                 <p class="card-body-hashtag">#이재명 #성남시장 #조사</p>
+                                             </div>
+                                             <p class="card-body-description">
+                                                대장동 개발사업 로비·특헤 의혹과 관련해 이재명 더불어민주당 대선 후보의 성남시장 시절 비서실장인 임승민 전 실장이 24일 오후 9시께까지 검찰 조사를 받았다.
+                                                서울중앙지검 전담수사팀(팀장 김태훈)에서 조사를 받은 임 전 실장은 이날 오후 9시께 검찰청을 나왔다.
+                                                임 전 실장은 기다리던 취재진의 '오늘 조사에서 이재명 지사 관련된 내용 있었나', '대장동 개발사업에 윗선이 관여했다는 의혹에 대해 한 말씀 해달라', '공모지침서 이재명 당시 시장에게 보고됐나' 등의 질문에 "특별하게 드릴 말씀이 없다"고 답한 후 현장을 벗어났다.
+                                                 <br><br> 기사더보기 <br><br><br><br>
+                                             </p>
+                                             <!--  카드 바디 본문 -->
+                                             <!--  카드 바디 푸터 -->
+                                             <div class="card-body-footer">
+                                                 <i class="omments_count"></i>댓글 0개
+                                                 <i class="reg_date"> 2021/11/24/22:48 </i>
+                                             </div>
+                                         </div>
+                                     </div>
+                                 </a>
+                             </div>
+                             
+                         </div>
+                             <div class="swiper-pagination"></div>
+                 
+                             <div class="swiper-scrollbar"></div>
+                         </div>
+                         <div class="swiper-button-prev"></div>
+                         <div class="swiper-button-next"></div>
+                     </div>
+                 </div>
+             </div>
+             <div class="weatherContents">
+                 <div class="CurrIcon">현재 날씨</div>
+                 <div class="CurrTemp"></div>
+                 <div class="City"></div>
+             </div>
+             <div class="shoppingContents">
+                <div class="contents_box">
+                    <div class="tempdiv">
+                        <div class="swiper-container">
+                            <div class="swiper-wrapper">
+                                <!-- 카드뉴스 1 -->
+                                <div class="swiper-slide">
+                                    <a href="https://www.coupang.com/vp/products/1313940259?itemId=2331784730&vendorItemId=70328322770&q=40%EB%8C%80&itemsCount=36&searchId=a3b984207ed3449b9aaf9d23698e1b23&rank=0"
+                                        target="_blank">
+                                        <!-- 클릭 시 링크 설정 -->
+                                        <div class="card">
+                                            <!-- 카드 헤더 -->
+                                            <div class="shopping-card-header1">
+                                            </div>
+                                            <!--  카드 바디 -->
+                                            <div class="card-body">
+                                                <!--  카드 바디 헤더 -->
+                                                <div class="card-body-header">
+                                                    <h1 class="cardnews_title">이너 프로바이오틱스 유산균 베네핏 30p</h1>
+                                                    <p class="card-body-hashtag">#일양약품 #영양제 #가격 : 10,610원 </p>
+                                                </div>
+                                                <p class="card-body-description">
+                                                    제작업소 : 이앤에스(주) <br>
+                                                    유통기한: 2022-11-21 이후인 상품<br>
+                                                    타입: 스틱<br>
+                                                    영양제 기능: 소화/위/장<br>
+                                                    사용대상: 성인남녀공용<br>
+                                                    <br><br> 쇼핑 하러 가기 <br><br><br><br>
+                                                </p>
+                                                <!--  카드 바디 본문 -->
+                                                <!--  카드 바디 푸터 -->
+                                                <div class="card-body-footer">
+                                                    <i class="omments_count"></i>댓글 0개
+                                                    <i class="reg_date"> 21-11-25 09:24 </i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <!-- 카드뉴스 2 -->
+                                <div class="swiper-slide">
+                                    <a href="https://www.coupang.com/vp/products/343490373?itemId=1091467635&vendorItemId=5605533989&q=40%EB%8C%80&itemsCount=36&searchId=a3b984207ed3449b9aaf9d23698e1b23&rank=1"
+                                        target="_blank">
+                                        <!-- 클릭 시 링크 설정 -->
+                                        <div class="card">
+                                            <!-- 카드 헤더 -->
+                                            <div class="shopping-card-header2">
+                                            </div>
+                                            <!--  카드 바디 -->
+                                            <div class="card-body">
+                                                <!--  카드 바디 헤더 -->
+                                                <div class="card-body-header">
+                                                    <h1 class="cardnews_title">남성용 캐주얼 정장벨트
+                                                    </h1>
+                                                    <p class="card-body-hashtag">#블랑프뢰르 #밸트 #가격 : 9,900원</p>
+                                                </div>
+                                                <p class="card-body-description">
+                                                    색상계열: 블랙계열<br>
+                                                    소재: 인조가죽(합성피혁)<br>
+                                                    폭(너비): 중간(미디움)벨트<br>
+                                                    길이: 113cm<br>
+                                                    <br><br> 쇼핑 하러 가기 <br><br><br><br>
+                                                </p>
+                                                <!--  카드 바디 본문 -->
+                                                <!--  카드 바디 푸터 -->
+                                                <div class="card-body-footer">
+                                                    <i class="omments_count"></i>댓글 27개
+                                                    <i class="reg_date"> 21-11-27 16:29 </i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <!-- 카드뉴스 3 -->
+                                <div class="swiper-slide">
+                                    <a href="https://www.coupang.com/vp/products/5008205391?itemId=6702418362&vendorItemId=73996041160&q=%EC%B9%B4%EC%9A%B0%EC%B9%98&itemsCount=36&searchId=7af8aa815754466599eb186bbddfe14d&rank=2"
+                                        target="_blank">
+                                        <!-- 클릭 시 링크 설정 -->
+                                        <div class="card">
+                                            <!-- 카드 헤더 -->
+                                            <div class="shopping-card-header3">
+                                            </div>
+                                            <!--  카드 바디 -->
+                                            <div class="card-body">
+                                                <!--  카드 바디 헤더 -->
+                                                <div class="card-body-header">
+                                                    <h1 class="cardnews_title">5005SF 홍맥반석 돌쇼파 돌카우치</h1>
+                                                    <p class="card-body-hashtag">#현대의료기 #카우치 #가격:549,000원</p>
+                                                </div>
+                                                <p class="card-body-description">
+                                                    색상: 브라운<br> 구성품: 프레임, 보료, 원석<br>
+                                                    주요 소재: 보료(합판+샤무드가죽)<br>
+                                                    크기 :W2200mm x L980mm x H900mm
+                                                    <br><br> 쇼핑 하러 가기 <br><br><br><br>
+                                                </p>
+                                                <!--  카드 바디 본문 -->
+                                                <!--  카드 바디 푸터 -->
+                                                <div class="card-body-footer">
+                                                    <i class="omments_count"></i>댓글 0개
+                                                    <i class="reg_date"> 21-11-22 22:26 </i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <!-- 카드뉴스 4 -->
+                                <div class="swiper-slide">
+                                    <a href="https://www.coupang.com/vp/products/6058199478?itemId=11129005098&vendorItemId=78407618743&q=%EA%B0%A4%EB%9F%AD%EC%8B%9C+%EC%9B%8C%EC%B9%984&itemsCount=36&searchId=0f327f2218fd41f9ae095764b38d2aa8&rank=1"
+                                        target="_blank">
+                                        <!-- 클릭 시 링크 설정 -->
+                                        <div class="card">
+                                            <!-- 카드 헤더 -->
+                                            <div class="shopping-card-header4">
+                                            </div>
+                                            <!--  카드 바디 -->
+                                            <div class="card-body">
+                                                <!--  카드 바디 헤더 -->
+                                                <div class="card-body-header">
+                                                    <h1 class="cardnews_title"> 삼성전자 갤럭시 워치 4 40mm</h1>
+                                                    <p class="card-body-hashtag">#삼성 #웨어러블기기 #가격: 231,220</p>
+                                                </div>
+                                                <p class="card-body-description">
+                                                    심전도측정 기능: 심전도측정 가능<br>
+                                                    혈중산소측정 기능: 혈중산소측정 가능<br>
+                                                    혈압측정 기능: 혈압측정 가능<br>
+                                                    스마트워치 연결성: GPS<br>
+                                                    화면크기: 40mm<br>
+                                                    <br><br> 쇼핑 하러 가기 <br><br><br><br>
+                                                </p>
+                                                <!--  카드 바디 본문 -->
+                                                <!--  카드 바디 푸터 -->
+                                                <div class="card-body-footer">
+                                                    <i class="omments_count"></i>댓글 0개
+                                                    <i class="reg_date"> 21.11.26 17:17 </i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+
+                            </div>
+                            <div class="swiper-pagination"></div>
+
+                            <div class="swiper-scrollbar"></div>
+                        </div>
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+                    </div>
+                </div>
+            </div>
+             <div class="YouTubeContents">
+                 <div class="contents_box">
+                     <div class="tempdiv">
+                         <div class="swiper-container">
+                             <div class="swiper-wrapper">
+                                 <!-- 카드뉴스 1 -->
+                                 <div class="swiper-slide">
+                                     <a href="https://www.youtube.com/watch?v=u1Hx8XhcGS0" target="_blank">
+                                         <!-- 클릭 시 링크 설정 -->
+                                         <div class="card">
+                                             <!-- 카드 헤더 -->
+                                             <div class="youtube-card-header1">
+                                             </div>
+                                             <!--  카드 바디 -->
+                                             <div class="card-body">
+                                                 <!--  카드 바디 헤더 -->
+                                                 <div class="card-body-header">
+                                                     <h1 class="cardnews_title">7080 추억의 노래모음 45곡 연속듣기, 7080세대에 즐겨 듣던 노래, 응원가, 노래방에서 자주 부르는 노래, 보고듣는 소울뮤직 TV</h1>
+                                                     <p class="card-body-hashtag">  </p>
+                                                 </div>
+                                                 <p class="card-body-description">
+                                                     여기서 나오는 광고는 유투브 자체적으로 자동적으로 삽입되는것이며,  (저랑은 아무 상관없습니다..)
+                                                     그로인한 광고 수익은 원저작권자에게 모두 돌아갑니다. 저는 단 1원한푼 취하지 못함을 말씀드립니다.
+                                                 </p>
+                                                 <!--  카드 바디 본문 -->
+                                                 <!--  카드 바디 푸터 -->
+                                                 <div class="card-body-footer">
+                                                     <i class="omments_count"></i> 댓글 531개
+                                                     <i class="reg_date"> 2020. 1. 10. </i>
+                                                 </div>
+                                             </div>
+                                         </div>
+                                     </a>
+                                 </div>
+                                 <!-- 카드뉴스 2 -->
+                                 <div class="swiper-slide">
+                                     <a href="https://www.youtube.com/watch?v=droVPgsCh6c" target="_blank">
+                                         <!-- 클릭 시 링크 설정 -->
+                                         <div class="card">
+                                             <!-- 카드 헤더 -->
+                                             <div class="youtube-card-header2">
+                                             </div>
+                                             <!--  카드 바디 -->
+                                             <div class="card-body">
+                                                 <!--  카드 바디 헤더 -->
+                                                 <div class="card-body-header">
+                                                     <h1 class="cardnews_title">한국에 간다고 하면 가장 많이 받는 질문 (국뽕 주의)</h1>
+                                                     <p class="card-body-hashtag"> </p>
+                                                 </div>
+                                                 <p class="card-body-description">
+                                                     한국에 사는 외국인들은 왜 한국을 선택했을까?
+                                                     그들도 이 질문을 제일 많이 받는다고 합니다.
+                                                     "Why Korea?"
+
+                                                     "영어 잘하는 미국누나" 캘리와 한국에 사는 외국인들의 이야기
+                                                     캘리 영상을 더 보고 싶다면 [딱유목] 채널로 오세요~
+                                                     --------------------------------
+                                                     ★[체인지그라운드]를 구독해, 매일매일 자기성장, 자기계발, 동기부여 콘텐츠를 간편하게 받아보세요.
+
+                                                     [체인지그라운드] 유튜브 채널:
+                                                     https://www.youtube.com/체인지그라운드
+
+                                                     [체인지그라운드] 페이스북 채널:
+                                                     https://www.facebook.com/changeground
+
+                                                     [체인지그라운드] 광고 문의 :
+                                                     info@changeground.com
+                                                 </p>
+                                                 <!--  카드 바디 본문 -->
+                                                 <!--  카드 바디 푸터 -->
+                                                 <div class="card-body-footer">
+                                                     <i class="omments_count"></i> 댓글 31개
+                                                     <i class="reg_date"> 2020. 4. 19. </i>
+                                                 </div>
+                                             </div>
+                                         </div>
+                                     </a>
+                                 </div>
+                                 <!-- 카드뉴스 3 -->
+                                 <div class="swiper-slide">
+                                     <a href="https://www.youtube.com/watch?v=L1StumXAzhY" target="_blank">
+                                         <!-- 클릭 시 링크 설정 -->
+                                         <div class="card">
+                                             <!-- 카드 헤더 -->
+                                             <div class="youtube-card-header3">
+                                             </div>
+                                             <!--  카드 바디 -->
+                                             <div class="card-body">
+                                                 <!--  카드 바디 헤더 -->
+                                                 <div class="card-body-header">
+                                                     <h1 class="cardnews_title">[자연인] 아내와 별거하게 된 자연인의 사연 (#1/5)</h1>
+                                                     <p class="card-body-hashtag">#나는자연인이다 #자연인 #레전드</p>
+                                                 </div>
+                                                 <p class="card-body-description">
+                                                     [나는 자연인이다] 262회 2017.09.20 방송
+
+                                                     MBN 공식 ‘나는 자연인이다’ 채널입니다.
+                                                     ☞ 매주 수요일 밤 9시 50분 본방송
+
+                                                     ▶ 광고 및 비즈니스 문의: mbndcmanager@gmail.com
+
+                                                     #나는자연인이다 #자연인 #레전드 #MBN #이승윤 #윤택 #먹방 #전설의눈빛
+
+                                                     ✅ 나는 자연인이다 채널 구독하기: https://www.youtube.com/channel/UCLtO...
+                                                 </p>
+                                                 <!--  카드 바디 본문 -->
+                                                 <!--  카드 바디 푸터 -->
+                                                 <div class="card-body-footer">
+                                                     <i class="omments_count"></i> 댓글 5개
+                                                     <i class="reg_date"> 2021. 12. 1. </i>
+                                                 </div>
+                                             </div>
+                                         </div>
+                                     </a>
+                                 </div>
+                                 <!-- 카드뉴스 4 -->
+                                 <div class="swiper-slide">
+                                     <a href="https://www.youtube.com/watch?v=hytTHgQdy_M" target="_blank">
+                                         <!-- 클릭 시 링크 설정 -->
+                                         <div class="card">
+                                             <!-- 카드 헤더 -->
+                                             <div class="youtube-card-header4">
+                                             </div>
+                                             <!--  카드 바디 -->
+                                             <div class="card-body">
+                                                 <!--  카드 바디 헤더 -->
+                                                 <div class="card-body-header">
+                                                     <h1 class="cardnews_title">  [나 혼자 산다] 38년 만에 첫 자취에 도전한 산다라박❗ 소소한 일상까지 다 누려버릴꺼야🍜🚌 | #산다라박 #2NE1 MBC211126방송 </h1>
+                                                     <p class="card-body-hashtag"> #산다라박 #2NE1</p>
+                                                 </div>
+                                                 <p class="card-body-description">
+                                                     [나 혼자 산다] 금요일 밤 11시 10분 방송!
+                                                     MBC의 따끈따끈한 영상을 내 맘대로 편하게 즐기는 채널🌀
+                                                     엠뚜루마뚜루 구독하기👉https://www.youtube.com/c/엠뚜루마뚜루
+
+                                                     #나혼자산다
+                                                     #엠뚜루마뚜루
+
+                                                     * [나 혼자 산다] 풀버전 보러가기
+                                                     ✔ WAVVE : https://www.wavve.com/player/vod?prog...
+
+                                                     ✔ iMBC : http://playvod.imbc.com/templete/VodL...
+                                                 </p>
+                                                 <!--  카드 바디 본문 -->
+                                                 <!--  카드 바디 푸터 -->
+                                                 <div class="card-body-footer">
+                                                     <i class="omments_count"></i> 댓글 574개
+                                                     <i class="reg_date"> 2021. 11. 30. </i>
+                                                 </div>
+                                             </div>
+                                         </div>
+                                     </a>
+                                 </div>
+                                 <!-- 카드뉴스 5 -->
+                                 <div class="swiper-slide">
+                                     <a href="https://www.youtube.com/watch?v=jVjQQDSj2yc" target="_blank">
+                                         <!-- 클릭 시 링크 설정 -->
+                                         <div class="card">
+                                             <!-- 카드 헤더 -->
+                                             <div class="youtube-card-header5">
+                                             </div>
+                                             <!--  카드 바디 -->
+                                             <div class="card-body">
+                                                 <!--  카드 바디 헤더 -->
+                                                 <div class="card-body-header">
+                                                     <h1 class="cardnews_title">  [#도깨비] 1~3화 33분 만에 몰아보기 </h1>
+                                                     <p class="card-body-hashtag"> </p>
+                                                 </div>
+                                                 <p class="card-body-description">
+                                                     [#도깨비] 1~3화 33분 만에 몰아보기 l #Diggle
+
+                                                     Let's giggle, :Diggle!
+                                                     기획/제작 제이님, 땡주, 야지, 김욜로, 남지님, 고니고니, 정띠, 김룩스
+
+                                                     TVING에서 다시보기 : http://program.tving.com/tvn/dokebi/9...
+                                                 </p>
+                                                 <!--  카드 바디 본문 -->
+                                                 <!--  카드 바디 푸터 -->
+                                                 <div class="card-body-footer">
+                                                     <i class="omments_count"></i> 댓글 3,914개
+                                                     <i class="reg_date"> 2019. 12. 27. </i>
+                                                 </div>
+                                             </div>
+                                         </div>
+                                     </a>
+                                 </div>
+                             </div>
+                             <div class="swiper-pagination"></div>
+
+                             <div class="swiper-scrollbar"></div>
+                         </div>
+                         <div class="swiper-button-prev"></div>
+                         <div class="swiper-button-next"></div>
+                     </div>
+                 </div>
+             </div>
+         </section>
+ 
+         <!-- footer 부분 -->
+         <footer>
+             <nav>
+                 <a href="https://github.com/j-miiin/Googlasses" target="_blank">GitHub</a>
+             </nav>
+             <p>
+                 <span>저자 : Googlasses</span><br>
+                 <span>Copyright 2021. Googlasses. All Rights Reserved.</span>
+             </p>
+         </footer>
+     </div>
+     
+ </body>
+ 
+ </html>
