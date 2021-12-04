@@ -126,21 +126,21 @@
              <div class="content">
                  <div>
                      <button class="popupCloseBtn" onclick="closePopup(1)"><i class="fas fa-times"></i></button>
-                     <p style="font-size:30px">
-                         이메일 작성
-                     </p>
+                     <h2 class="mapTitle">이메일 작성</h2>
                      <div>
                          <form action="input.jsp" method="post">
-                             주소&ensp; <input type="email" name="email" placeholder="notrealmail@notmail.com" style="width:500px;height:25px;font-size:15px;" /><br>
+                             <input type="email" name="email" placeholder="notrealmail@notmail.com" style="width:500px;height:25px;font-size:15px;" />
                          </form>
                          <form action="input.jsp" method="post">
-                             제목&ensp; <input type="text" name="text" style="width:500px;height:25px;font-size:15px;" /><br>
+                             <input type="text" name="text" placeholder="제목" style="width:500px;height:25px;font-size:15px;" />
                          </form>
                          <form action="input.jsp" method="post">
-                             내용&ensp; <textarea name="feedback" rows="20" cols="66"></textarea><br>
+                             <textarea name="feedback" class="mailtext" placeholder="내용" rows="20" cols="60"></textarea>
                          </form>
                          <form action="input.jsp" method="post">
-                             <input type="button" value="전송" onclick="alert('메일을 성공적으로 전송하였습니다.')">
+                             <input type="button" class="mailbutton" value="전송" onclick="alert('메일을 성공적으로 전송하였습니다.')">
+                             <input type="button" class="mailbutton2" value="첨부 및 선택" onclick="alert('첨부 및 선택')"
+                                    style="float:right; margin-left:250px;">
                          </form>
                      </div>
                  </div>
@@ -568,7 +568,7 @@
                                              <div class="card-body">
                                                  <!--  카드 바디 헤더 -->
                                                  <div class="card-body-header">
-                                                     <h1 class="cardnews_title">[무한도전] ((무한상사)) 우리 회사 아니에요...? 현실감 터지는 7인 7색 출근! ε=ε=ε= ᕕ( ᐛ )ᕗ</h1>
+                                                     <h1 class="cardnews_title">[무한도전] ((무한상사)) 우리 회사 아니에요...? 현실감 터지는 7인 7색</h1>
                                                      <p class="card-body-hashtag"> </p>
                                                  </div>
                                                  <p class="card-body-description">
@@ -718,7 +718,7 @@
                                              <div class="card-body">
                                                  <!--  카드 바디 헤더 -->
                                                  <div class="card-body-header">
-                                                     <h1 class="cardnews_title"> 내 인생의 주인공은 바로 나 ! 춤이 가르쳐준 교훈 | 거침킥⏱오분순삭 MBC070705방송</h1>
+                                                     <h1 class="cardnews_title"> 내 인생의 주인공은 바로 나 ! 춤이 가르쳐준 교훈 | 거침킥⏱오분순삭</h1>
                                                      <p class="card-body-hashtag">#오분순삭 #거침없이하이킥 #황혼이혼</p>
                                                  </div>
                                                  <p class="card-body-description">

@@ -214,6 +214,37 @@ a {
       color: var(--red-yellow-change);
       cursor: pointer;
   }
+  
+.mailbutton {
+    width: 100px;
+    height: 50px;
+    border: none;
+    color: #f6e8db;
+    background-color: #9b4747;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.mailbutton2 {
+    width: 150px;
+    height: 30px;
+    border: none;
+    color: #9b4747;
+    background-color: #f6e8db;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 25px;
+    line-height: 1px;
+    cursor: pointer;
+}
+
+.mailtext {
+    font-size: 25px;
+}
 
   .mapTitle {
       font-size: 30px;
@@ -634,7 +665,12 @@ table {
 .card.card:hover .shopping-card-header1,
 .card.card:hover .shopping-card-header2,
 .card.card:hover .shopping-card-header3,
-.card.card:hover .shopping-card-header4
+.card.card:hover .shopping-card-header4,
+.card.card:hover .youtube-card-header1,
+.card.card:hover .youtube-card-header2,
+.card.card:hover .youtube-card-header3,
+.card.card:hover .youtube-card-header4,
+.card.card:hover .youtube-card-header5
  {
     opacity: 0.8;
     height: 0px;

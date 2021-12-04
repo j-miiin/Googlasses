@@ -127,21 +127,21 @@
              <div class="content">
                  <div>
                      <button class="popupCloseBtn" onclick="closePopup(1)"><i class="fas fa-times"></i></button>
-                     <p style="font-size:30px">
-                         이메일 작성
-                     </p>
+                     <h2 class="mapTitle">이메일 작성</h2>
                      <div>
                          <form action="input.jsp" method="post">
-                             주소&ensp; <input type="email" name="email" placeholder="notrealmail@notmail.com" style="width:500px;height:25px;font-size:15px;" /><br>
+                             <input type="email" name="email" placeholder="notrealmail@notmail.com" style="width:500px;height:25px;font-size:15px;" />
                          </form>
                          <form action="input.jsp" method="post">
-                             제목&ensp; <input type="text" name="text" style="width:500px;height:25px;font-size:15px;" /><br>
+                             <input type="text" name="text" placeholder="제목" style="width:500px;height:25px;font-size:15px;" />
                          </form>
                          <form action="input.jsp" method="post">
-                             내용&ensp; <textarea name="feedback" rows="20" cols="66"></textarea><br>
+                             <textarea name="feedback" class="mailtext" placeholder="내용" rows="20" cols="60"></textarea>
                          </form>
                          <form action="input.jsp" method="post">
-                             <input type="button" value="전송" onclick="alert('메일을 성공적으로 전송하였습니다.')">
+                             <input type="button" class="mailbutton" value="전송" onclick="alert('메일을 성공적으로 전송하였습니다.')">
+                             <input type="button" class="mailbutton2" value="첨부 및 선택" onclick="alert('첨부 및 선택')"
+                                    style="float:right; margin-left:250px;">
                          </form>
                      </div>
                  </div>
@@ -534,7 +534,7 @@
                                              <div class="card-body">
                                                  <!--  카드 바디 헤더 -->
                                                  <div class="card-body-header">
-                                                     <h1 class="cardnews_title">7080 추억의 노래모음 45곡 연속듣기, 7080세대에 즐겨 듣던 노래, 응원가, 노래방에서 자주 부르는 노래, 보고듣는 소울뮤직 TV</h1>
+                                                     <h1 class="cardnews_title">7080 추억의 노래모음 45곡 연속듣기, 7080세대에 즐겨 듣던 노래</h1>
                                                      <p class="card-body-hashtag">  </p>
                                                  </div>
                                                  <p class="card-body-description">
@@ -644,7 +644,7 @@
                                              <div class="card-body">
                                                  <!--  카드 바디 헤더 -->
                                                  <div class="card-body-header">
-                                                     <h1 class="cardnews_title">  [나 혼자 산다] 38년 만에 첫 자취에 도전한 산다라박❗ 소소한 일상까지 다 누려버릴꺼야🍜🚌 | #산다라박 #2NE1 MBC211126방송 </h1>
+                                                     <h1 class="cardnews_title">  [나 혼자 산다] 38년 만에 첫 자취에 도전한 산다라박❗ 소소한 일상까지 </h1>
                                                      <p class="card-body-hashtag"> #산다라박 #2NE1</p>
                                                  </div>
                                                  <p class="card-body-description">

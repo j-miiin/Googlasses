@@ -126,21 +126,21 @@
              <div class="content">
                  <div>
                      <button class="popupCloseBtn" onclick="closePopup(1)"><i class="fas fa-times"></i></button>
-                     <p style="font-size:30px">
-                         이메일 작성
-                     </p>
+                     <h2 class="mapTitle">이메일 작성</h2>
                      <div>
                          <form action="input.jsp" method="post">
-                             주소&ensp; <input type="email" name="email" placeholder="notrealmail@notmail.com" style="width:500px;height:25px;font-size:15px;" /><br>
+                             <input type="email" name="email" placeholder="notrealmail@notmail.com" style="width:500px;height:25px;font-size:25px;" />
                          </form>
                          <form action="input.jsp" method="post">
-                             제목&ensp; <input type="text" name="text" style="width:500px;height:25px;font-size:15px;" /><br>
+                             <input type="text" name="text" placeholder="제목" style="width:500px;height:25px;font-size:25px;" />
                          </form>
                          <form action="input.jsp" method="post">
-                             내용&ensp; <textarea name="feedback" rows="20" cols="66"></textarea><br>
+                             <textarea name="feedback" class="mailtext" placeholder="내용" rows="10" cols="37"></textarea>
                          </form>
                          <form action="input.jsp" method="post">
-                             <input type="button" value="전송" onclick="alert('메일을 성공적으로 전송하였습니다.')">
+                             <input type="button" class="mailbutton" value="전송" onclick="alert('메일을 성공적으로 전송하였습니다.')">
+                             <input type="button" class="mailbutton2" value="첨부 및 선택" onclick="alert('첨부 및 선택')"
+                                    style="float:right; margin-left:250px;">
                          </form>
                      </div>
                  </div>
@@ -592,7 +592,7 @@
                                              <div class="card-body">
                                                  <!--  카드 바디 헤더 -->
                                                  <div class="card-body-header">
-                                                     <h1 class="cardnews_title">청주에 신상 분식 맛집이 떳다!! 100% 수제로 만드는 튀김에 쫀득쫀득 쌀 떡볶이 대존맛집 </h1>
+                                                     <h1 class="cardnews_title">청주에 신상 분식 맛집이 떳다!! 100% 수제로 만드는 </h1>
                                                      <p class="card-body-hashtag">#전단지 #70대 #점주</p>
                                                  </div>
                                                  <p class="card-body-description">
@@ -632,7 +632,7 @@
                                              <div class="card-body">
                                                  <!--  카드 바디 헤더 -->
                                                  <div class="card-body-header">
-                                                     <h1 class="cardnews_title">가을에 듣기 좋은 노래 베스트 BEST 100곡| 하루 종일 들어도 좋은노래 BEST 100곡 | 일할때 듣기좋은 발라드 || 김범수 /바비킴/ 더원/태연/박명수/ 조성모/이승환</h1>
+                                                     <h1 class="cardnews_title">가을에 듣기 좋은 노래 베스트 BEST 100곡| 하루 종일</h1>
                                                      <p class="card-body-hashtag">#발라드 #2000년대 #1990년대</p>
                                                  </div>
                                                  <p class="card-body-description">

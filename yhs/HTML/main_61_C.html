@@ -127,21 +127,21 @@
              <div class="content">
                  <div>
                      <button class="popupCloseBtn" onclick="closePopup(1)"><i class="fas fa-times"></i></button>
-                     <p style="font-size:30px">
-                         이메일 작성
-                     </p>
+                     <h2 class="mapTitle">이메일 작성</h2>
                      <div>
                          <form action="input.jsp" method="post">
-                             주소&ensp; <input type="email" name="email" placeholder="notrealmail@notmail.com" style="width:500px;height:25px;font-size:15px;" /><br>
+                             <input type="email" name="email" placeholder="notrealmail@notmail.com" style="width:500px;height:25px;font-size:15px;" />
                          </form>
                          <form action="input.jsp" method="post">
-                             제목&ensp; <input type="text" name="text" style="width:500px;height:25px;font-size:15px;" /><br>
+                             <input type="text" name="text" placeholder="제목" style="width:500px;height:25px;font-size:15px;" />
                          </form>
                          <form action="input.jsp" method="post">
-                             내용&ensp; <textarea name="feedback" rows="20" cols="66"></textarea><br>
+                             <textarea name="feedback" class="mailtext" placeholder="내용" rows="20" cols="60"></textarea>
                          </form>
                          <form action="input.jsp" method="post">
-                             <input type="button" value="전송" onclick="alert('메일을 성공적으로 전송하였습니다.')">
+                             <input type="button" class="mailbutton" value="전송" onclick="alert('메일을 성공적으로 전송하였습니다.')">
+                             <input type="button" class="mailbutton2" value="첨부 및 선택" onclick="alert('첨부 및 선택')"
+                                    style="float:right; margin-left:250px;">
                          </form>
                      </div>
                  </div>
@@ -602,7 +602,7 @@
                                              <div class="card-body">
                                                  <!--  카드 바디 헤더 -->
                                                  <div class="card-body-header">
-                                                     <h1 class="cardnews_title">살아온 날 만큼 살아갈 날도 길어진 '노인의 시간' 100세+α시대 늙어도 낡지 않고 품위있는 노년을 사는 법ㅣEBS 다큐프라임 '100세 쇼크' 3부-늙은 신인류의 진짜 노인되기</h1>
+                                                     <h1 class="cardnews_title">살아온 날 만큼 살아갈 날도 길어진 '노인의 시간' 100세+α시대 늙어도</h1>
                                                      <p class="card-body-hashtag">#EBS다큐프라임 #100세쇼크 #웰에이징</p>
                                                  </div>
                                                  <p class="card-body-description">
