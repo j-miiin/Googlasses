@@ -1,5 +1,5 @@
 /* 
-    [ 메인 홈페이지 ]
+    [ 메인 홈페이지 ] - 색상 변형 버전
 
     작성자 : 김정민
 
@@ -12,42 +12,32 @@
 
 html {
     --bg-color-change: white;
-    --red-yellow-change: #9b4747;
-    --red-y-change: #9b4747;
-    --y-yellow-change: #f6e8db;
-    --y-y-change: #f6e8db;
-    --red-black-change: #9b4747;
+    --yellow-black-change: #f0e442;
     --black-yellow-change: black;
-    --grey-y-change: #848484;
-    --none-y-change: none;
 }
 
 html[data-theme="dark"] {
     --bg-color-change: #262626;
-    --red-yellow-change: #F2DD68;
-    --red-y-change: #F1ECD3;
-    --y-yellow-change: #F2DD68;
-    --y-y-change: #F1ECD3;
-    --red-black-change: #262626;
-    --black-yellow-change: #F2DD68;
-    --grey-y-change: #F1ECD3;
-    --none-y-change: #F1ECD3;
+    --yellow-black-change: black;
+    --black-yellow-change: #f0e442;
 }
   
 html[data-theme="light"] {
     --bg-color-change: white;
-    --red-yellow-change: #9b4747;
-    --red-y-change: #9b4747;
-    --y-yellow-change: #f6e8db;
-    --y-y-change: #f6e8db;
-    --red-black-change: #9b4747;
+    --yellow-black-change: #f0e442;
     --black-yellow-change: black;
-    --grey-y-change: #848484;
-    --none-y-change: none;
 }
 
 html {
     background-color: var(--bg-color-change);
+}
+
+html::-webkit-scrollbar {
+    width: 18px;
+}
+
+html::-webkit-scrollbar-thumb {
+    background: var(--black-yellow-change);
 }
 
 * {
@@ -57,11 +47,12 @@ html {
 body {
     margin: 0;
     font-family: 'NanumSquare', sans-serif;
+    overflow-x: hidden;
 }
 
 a {
     text-decoration: none;
-    color: var(--y-yellow-change);
+    color: var(--yellow-black-change);
 }
 
 .header {
@@ -71,17 +62,15 @@ a {
 
 .logInTxt {
     float: right;
-    width: 30px;
     margin-right: 30px;
-    color: var(--grey-y-change);
+    color: var(--black-yellow-change);
 }
 
 .darkmodeBtn {
     float: left;
-    color: var(--red-yellow-change);
+    color: var(--black-yellow-change);
     font-size: 25px;
     margin-left: 30px;
-    cursor: pointer;
 }
 
 #darkmode_toggle {
@@ -100,18 +89,16 @@ a {
     box-sizing: border-box;
     font-size: 50px;
     font-weight: bold;
-    color: var(--red-yellow-change);
+    color: var(--black-yellow-change);
 }
 
 .navbar {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background-color: var(--red-black-change);
+    background-color: var(--black-yellow-change);
     padding: 8px 12px;
     height: 50px;
-    border-top: 1px solid var(--none-y-change);
-    border-bottom: 1px solid var(--none-y-change);
 }
 
 .navbar_menu {
@@ -128,7 +115,7 @@ a {
 
 .navbar_menu button {
     font-size: 18px;
-    color: var(--y-yellow-change);
+    color: var(--yellow-black-change);
     background: none;
     border: none;
     cursor: pointer;
@@ -143,7 +130,7 @@ a {
     transform: translate(-50%);
     width: 0;
     height: 4px;
-    background: var(--y-yellow-change);
+    background: var(--yellow-black-change);
     transition: all .3s ease-out;
 }
 
@@ -154,15 +141,19 @@ a {
 
 .navbar_icons {
     list-style: none;
-    color: var(--y-yellow-change);
+    color: var(--yellow-black-change);
     display: flex;
     padding-left: 0;
     margin-top: 18px;
 }
 
-.navbar_icons li {
-    padding: 8px 12px;
-    margin-right: 50px;
+.nav_editBtn {
+    background: none;
+    outline: none;
+    border: none;
+    color: var(--y-yellow-change);
+    font-size: 16px;
+    cursor: pointer;
 }
 
 .navbar_toggleBtn {
@@ -170,13 +161,14 @@ a {
     position: absolute;
     right: 32px;
     font-size: 24px;
-    color: var(--y-yellow-change);
+    color: var(--yellow-black-change);
     padding-top: 5px;
 }
 
 #popup1,
 #popup2,
-#popup3 {
+#popup3,
+#popup4 {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -193,34 +185,36 @@ a {
 
 #popup1.hide,
 #popup2.hide,
-#popup3.hide {
+#popup3.hide,
+#popup4.hide {
 display: none;
 }
   
 #popup1 .content,
 #popup2 .content,
-#popup3 .content {
+#popup3 .content,
+#popup4 .content {
 padding: 20px;
 background: var(--bg-color-change);
 border-radius: 5px;
 box-shadow: 1px 1px 3px rgba(0, 0, 0, .3);
 }
 
-.popupCloseBtn {
-    margin-left: 95%;
-    background: none;
-    border: none;
-    font-size: 26px;
-    color: var(--red-yellow-change);
-    cursor: pointer;
-}
-
+  .popupCloseBtn {
+      margin-left: 95%;
+      background: none;
+      border: none;
+      font-size: 26px;
+      color: var(--black-yellow-change);
+      cursor: pointer;
+  }
+  
 .mailbutton {
     width: 100px;
     height: 50px;
     border: none;
-    color: #f6e8db;
-    background-color: #9b4747;
+    color: #f0e442;
+    background-color: black;
     padding: 15px 30px;
     text-align: center;
     text-decoration: none;
@@ -234,8 +228,8 @@ box-shadow: 1px 1px 3px rgba(0, 0, 0, .3);
     width: 150px;
     height: 30px;
     border: none;
-    color: #9b4747;
-    background-color: #f6e8db;
+    color: black;
+    background-color: #f0e442;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -248,17 +242,112 @@ box-shadow: 1px 1px 3px rgba(0, 0, 0, .3);
     font-size: 15px;
 }
 
-.mapTitle {
-    color: var(--red-yellow-change);
-    font-weight: bold;
+  .mapTitle {
+    color: var(--black-yellow-change);
+      font-weight: bold;
+  }
+
+  .email_section {
+    width: 98%;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    color: var(--black-yellow-change);
+}
+
+.email_addrInput,
+.email_titleInput {
+    width: 90%;
+    height: 25px;
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+.email_contentInput {
+    width: 90%;
+    height: 250px;
+    margin-bottom: 10px;
+}
+
+.email_contentInput::-webkit-scrollbar {
+    width: 10px;
+}
+
+.email_contentInput::-webkit-scrollbar-thumb {
+    background: var(--black-yellow-change);
+}
+
+.email_sendBtn,
+.scEditBtn {
+    font-size: 20px;
+    float: none;
+    margin: 0 auto;
+    width: 50%;
+    padding: 10px;
+    box-sizing: border-box;
+    background-color: var(--black-yellow-change);
+    color: var(--yellow-black-change);
+    border: none;
+    border-radius: 12px;
+    transition: 0.25s;
+}
+
+.email_sendBtn:hover,
+.scEditBtn:hover {
+    border: 4px solid var(--yellow-black-changee);
+}
+
+.email_sendBtn:active,
+.scEditBtn:active {
+    color: var(--black-yellow-change);
+    background-color: var(--yellow-black-change);
+}
+
+[id^=editMenu],
+[id^=editOTTMenu] {
+    display: none;
+}
+
+.editMenu {
+    font-size: 20px;
+}
+
+.editMenuTxt {
+    margin-right: 10px;
+}
+
+.editShortcut {
+    margin-top: 30px;
+}
+
+.editShortcut label {
+    font-size: 20px;
+    margin-right: 20px;
+}
+
+.scEditBtn {
+    font-size: 15px;
+    width: 60px;
+}
+
+.OTT_scTitle {
+    margin-top: 30px;
+    margin-bottom: 15px;
+    font-size: 20px;
+    color: var(--black-yellow-change);
+}
+
+.editOTTMenuIcon img{
+    width: 40px;
+    height: 40px;
 }
 
 .search_box {
     position: absolute;
-    margin-top: 50px;
+    margin-top: 70px;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: var(--y-y-change);
+    background: var(--black-yellow-change);
     height: 60px;
     border-radius: 40px;
     padding: 10px;
@@ -276,22 +365,26 @@ box-shadow: 1px 1px 3px rgba(0, 0, 0, .3);
     outline: none;
     float: left;
     padding: 0;
-    color: #404040;
+    color: var(--yellow-black-change);
     font-size: 16px;
     transition: 0.4s;
     line-height: 40px;
     width: 400px;
 }
 
+.search_txt::placeholder {
+    color: var(--yellow-black-change);
+}
+
 .search_btn {
     position: inherit;
     right: 10px;
     bottom: 8px;
-    color: var(--red-yellow-change);
+    color: var(--black-yellow-change);
     float: right;
     width: 43px;
     height: 43px;
-    border: var(--red-yellow-change) 2px;
+    border: var(--black-yellow-change) 2px;
     border-radius: 50%;
     background: var(--bg-color-change);
     display: flex;
@@ -320,7 +413,7 @@ input[id="menuicon"] + label span {
     width: 80%;
     height: 5px;
     border-radius: 30px;
-    background: var(--red-yellow-change);
+    background: var(--black-yellow-change);
     transition: all .35s;
 }
 
@@ -363,13 +456,12 @@ input[id="menuicon"]:checked + label {
 .todolist{
     width: 300px;
     height: 50%;
-    background: var(--red-black-change);
+    background: var(--black-yellow-change);
     position: fixed;
     top: 40%;
     left: -300px;
     z-index: 1;
     transition: all .35s;
-    border: 1px solid var(--none-y-change);
 }
 
 .todotemplate {
@@ -383,10 +475,10 @@ input[id="menuicon"]:checked + label {
 }
 
 .todoHead {
-    border-bottom: 1px solid var(--y-yellow-change);
+    border-bottom: 1px solid var(--yellow-black-change);
     margin: 10px;
     text-align: center;
-    color: var(--y-yellow-change);
+    color: var(--yellow-black-change);
 }
 
 .todoDay {
@@ -397,7 +489,7 @@ input[id="menuicon"]:checked + label {
 .todoTitle {
     font-size: 20px;
     font-weight: bold;
-    color: var(--y-yellow-change);
+    color: var(--yellow-black-change);
 }
 
 form {
@@ -405,7 +497,7 @@ form {
 }
 
 .inputTodoItem {
-    caret-color: var(--red-black-change);
+    caret-color: var(--yellow-black-change);
     border-radius: 24px;
     border: none;
     margin-left: 20px;
@@ -423,7 +515,7 @@ form {
 }
 
 .todoContents::-webkit-scrollbar-thumb {
-    background: var(--y-yellow-change);
+    background: var(--yellow-black-change);
 }
 
 .todoItemList ul {
@@ -435,7 +527,7 @@ form {
     cursor: pointer;
     position: relative;
     list-style: none;
-    color: var(--y-yellow-change);
+    color: var(--yellow-black-change);
     transition: 0.3s;
     margin-left: 20px;
     font-size: 18px;
@@ -443,8 +535,8 @@ form {
 }
 
 .todoItemList ul li:hover {
-    background: var(--y-yellow-change);
-    color: var(--red-black-change);
+    background: var(--yellow-black-change);
+    color: var(--black-yellow-change);
 }
 
 .todoItemList ul li.checked {
@@ -452,7 +544,7 @@ form {
 }
 
 .todoInputBtn {
-    background: var(--y-yellow-change);
+    background: var(--yellow-black-change);
     cursor: pointer;
     width: 30px;
     height: 30px;
@@ -460,7 +552,7 @@ form {
     align-items: center;
     justify-content: center;
     font-size: 18px;
-    color: var(--red-black-change);
+    color: var(--black-yellow-change);
     border-radius: 40px;
     border: none;
     outline: none;
@@ -494,8 +586,31 @@ section {
     justify-content: center;
     margin: 0 auto;
     margin-top: 150px;
-    width: 50%;
+    width: 60%;
     height: 100%;
+}
+
+.weatherContents img {
+    width: 75%;
+    height: 360px;
+    /* object-fit: cover; */
+}
+
+.fade {
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 1.5s;
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+  
+@-webkit-keyframes fade {
+    from {opacity: .4} 
+    to {opacity: 1}
+}
+
+@keyframes fade {
+    from {opacity: .4} 
+    to {opacity: 1}
 }
 
 .contents_box {
@@ -586,7 +701,6 @@ table {
 .card-header2,
 .card-header3,
 .card-header4,
-.card-header5,
 .shopping-card-header1,
 .shopping-card-header2,
 .shopping-card-header3,
@@ -609,66 +723,72 @@ table {
 }
 
 .card-header1 {
-    background-image: url("https://img.seoul.co.kr/img/upload/2021/11/11/SSI_20211111141844_O2.jpg");
+    background-image: url("https://thumb.mt.co.kr/06/2021/11/2021112323351310110_1.jpg/dims/optimize/");
 }
 
 .card-header2 {
-    background-image: url("https://dimg.donga.com/wps/NEWS/IMAGE/2021/11/27/110484148.4.jpg");
+    background-image: url("https://mimg.segye.com/content/image/2021/11/24/20211124519125.jpg");
 }
 
 .card-header3 {
-    background-image: url("https://img.seoul.co.kr/img/upload/2021/11/22/SSI_20211122224902_O2.jpg");
+    background-image: url("https://img.seoul.co.kr/img/upload/2021/11/24/SSI_20211124132042_O2.jpg");
 }
 
 .card-header4 {
-    background-image: url("http://www.veritas-a.com/news/photo/202111/398726_301737_3433.jpg");
-}
-
-.card-header5 {
-	background-image: url("http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=999&simg=%2Fcontent%2Fimage%2F2021%2F11%2F27%2F20211127000018_0.jpg");
+    background-image: url("https://image.newsis.com/2021/11/24/NISI20211124_0018188713_web.jpg?rnd=20211124164143");
 }
 
 .shopping-card-header1{
-    background-image: url("https://thumbnail9.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/2032072526910703-bd731166-af02-4d8e-8cc8-f139226054ee.jpg")
+    background-image: url("https://thumbnail8.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/4768920761782797-10271d33-68a2-445c-81b3-9b573b395a7e.jpg")
 }
 
 .shopping-card-header2{
-    background-image: url("https://www.nintendo.co.kr/switch/modal/img/lineup/img-package--blueRed-new.png")
+    background-image: url("https://thumbnail9.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/2019/11/21/12/8/87ebd5a0-ed61-4787-b2fd-a05af1ba98eb.jpg")
 }
 
 .shopping-card-header3{
-    background-image: url("https://thumbnail7.coupangcdn.com/thumbnails/remote/230x230ex/image/vendor_inventory/51ca/5c66b98521fee965267fc0aad7e974bd68c50680fd73bb7b544fe03e4f3e.jpg")
+    background-image: url("https://thumbnail10.coupangcdn.com/thumbnails/remote/230x230ex/image/vendor_inventory/0d59/406adf72325954243aba439a39d1be96d119560a07453f01926bf4ea1e72.jpg")
 }
 
 .shopping-card-header4{
-    background-image: url("https://thumbnail7.coupangcdn.com/thumbnails/remote/230x230ex/image/vendor_inventory/cf68/cf897325d29d575cf2f80f7b5a63bad0bc26bb1fb6bac58fcbd6bcfa1c0b.jpg")
+    background-image: url("https://thumbnail6.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/121943323333314-62b434a2-8043-45c0-9cf6-01a0a84a6b40.jpg")
 }
 
 .youtube-card-header1{
-    background-image: url("https://img.youtube.com/vi/YUOsy1nGgQM/0.jpg")
+    background-image: url("https://img.youtube.com/vi/u1Hx8XhcGS0/0.jpg")
 }
 
 .youtube-card-header2{
-    background-image: url("https://img.youtube.com/vi/ub1WfnpqXFc/0.jpg")
+    background-image: url("https://img.youtube.com/vi/droVPgsCh6c/0.jpg")
 }
 
 .youtube-card-header3{
-    background-image: url("https://img.youtube.com/vi/qcJ7pqZaMjo/0.jpg")
+    background-image: url("https://img.youtube.com/vi/L1StumXAzhY/0.jpg")
 }
 
 .youtube-card-header4{
-    background-image: url("https://img.youtube.com/vi/kBsxLoExmSE/0.jpg")
+    background-image: url("https://img.youtube.com/vi/hytTHgQdy_M/0.jpg")
 }
 
 .youtube-card-header5{
-    background-image: url("https://img.youtube.com/vi/dckeXowI4XA/0.jpg")
+    background-image: url("https://img.youtube.com/vi/ih_bo39OdD0/0.jpg")
 }
 
 .card:hover .card-header1,
 .card:hover .card-header2,
 .card:hover .card-header3,
 .card:hover .card-header4,
-.card:hover .card-header5,
+<<<<<<< HEAD:kjm/CSS/main_41-60_C.css
+.card:hover .shopping-card-header1,
+.card:hover .shopping-card-header2,
+.card:hover .shopping-card-header3,
+.card:hover .shopping-card-header4,
+.card:hover .youtube-card-header1,
+.card:hover .youtube-card-header2,
+.card:hover .youtube-card-header3,
+.card:hover .youtube-card-header4,
+.card:hover .youtube-card-header5
+=======
 .card.card:hover .shopping-card-header1,
 .card.card:hover .shopping-card-header2,
 .card.card:hover .shopping-card-header3,
@@ -678,10 +798,12 @@ table {
 .card.card:hover .youtube-card-header3,
 .card.card:hover .youtube-card-header4,
 .card.card:hover .youtube-card-header5
+>>>>>>> upstream/main:yhs/CSS/main_41-60_C.css
  {
     opacity: 0.8;
     height: 0px;
 }
+
 
 h1 {
     font-size: 22px;
@@ -696,13 +818,13 @@ h1 {
 }
 
 .card-body-hashtag {
-    color: var(--red-y-change);
+    color: var(--black-yellow-change);
     font-size: 15px;
 }
 
 .card-body-description {
     opacity: 0;
-    color: var(--grey-y-change);
+    color: var(--black-yellow-change);
     line-height: 25px;
     -webkit-transition: .2s ease-in-out; /*사파리&크롬*/
     -moz-transition: .2s ease-in-out; /*파이어폭스*/
@@ -719,7 +841,7 @@ h1 {
 }
 
 .card:hover .card-body-description::-webkit-scrollbar-thumb {
-    background: var(--red-yellow-change);
+    background: var(--black-yellow-change);
 }
 
 .card:hover .card-body-description {
@@ -740,7 +862,7 @@ h1 {
     bottom: 0;
     width: 100%;
     font-size: 14px;
-    color: var(--grey-y-change);
+    color: var(--black-yellow-change);
     padding: 0 15px;
 }
 
@@ -765,11 +887,11 @@ footer {
     /* margin-top: 300px; */
     text-align: center;
     font-size: 5px;
-    color: var(--grey-y-change);
+    color: var(--black-yellow-change);
 }
 
 footer nav a {
-    color: var(--grey-y-change);
+    color: var(--black-yellow-change);
 }
 
 @media screen and (max-width: 768px) {
