@@ -101,6 +101,7 @@ const swiper = new Swiper('.swiper-container', {
     },
   });
 
+  // darkmode 토글
 const $darkmodeToggle = document.querySelector('#darkmode_toggle');
 
 $darkmodeToggle.addEventListener('change', ({target}) => {
@@ -113,3 +114,86 @@ $darkmodeToggle.addEventListener('change', ({target}) => {
     document.querySelector('.darkmodeBtn').innerHTML = darkmodeIcon;
   }
 })
+
+// 날씨 콘텐츠 슬라이드
+$(document).ready(function () {
+	$(".weatherSlide").not(".active").hide();
+	
+	setInterval(nextSlide, 4000);
+});
+
+//이전 슬라이드
+function prevSlide() {
+	$(".weatherSlide").hide();
+	var allSlide = $(".weatherSlide"); 
+	var currentIndex = 0; 
+	
+	$(".weatherSlide").each(function(index,item){ 
+		if($(this).hasClass("active")) {
+			currentIndex = index;
+		}
+        
+	});
+	
+	var newIndex = 0;
+    
+	if(currentIndex <= 0) {
+		newIndex = allSlide.length-1;
+	} else {
+		newIndex = currentIndex-1;
+	}
+
+	$(".weatherSlide").removeClass("active");
+	$(".weatherSlide").eq(newIndex).addClass("active");
+	$(".weatherSlide").eq(newIndex).show();
+
+}
+
+//다음 슬라이드
+function nextSlide() {
+	$(".weatherSlide").hide();
+	var allSlide = $(".weatherSlide");
+	var currentIndex = 0;
+	
+	$(".weatherSlide").each(function(index,item){
+		if($(this).hasClass("active")) {
+			currentIndex = index;
+		}
+        
+	});
+	
+	var newIndex = 0;
+	
+	if(currentIndex >= allSlide.length-1) {
+		newIndex = 0;
+	} else {
+		newIndex = currentIndex+1;
+	}
+
+	$(".weatherSlide").removeClass("active");
+	$(".weatherSlide").eq(newIndex).addClass("active");
+	$(".weatherSlide").eq(newIndex).show();
+	
+}
+
+// 네비바 단축키 수정
+function EditShortcut() {
+  const scEditBtn = document.querySelector('.scEditBtn');
+  const scEmailInput = document.querySelector('#sc_email');
+
+  if (scEditBtn.innerText == "수정") {
+    scEditBtn.innerHTML = "완료";
+    scEmailInput.removeAttribute('readonly');
+  } else {
+    scEditBtn.innerHTML = "수정";
+    scEmailInput.setAttribute('readonly', 'readonly');
+  }
+}
+
+function printEmail() {
+  const scEmailInput = document.querySelector('#sc_email');
+  const EmailPopupInput = document.querySelector('.email_addrInput');
+
+  var txt = scEmailInput.value;
+  EmailPopupInput.setAttribute('value', txt);
+}
